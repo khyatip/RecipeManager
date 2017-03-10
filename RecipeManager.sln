@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeManager", "RecipeManager\RecipeManager.csproj", "{686090D9-A241-48D4-A799-60E428E87FAE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhone = Release|iPhone
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{686090D9-A241-48D4-A799-60E428E87FAE}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{686090D9-A241-48D4-A799-60E428E87FAE}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{686090D9-A241-48D4-A799-60E428E87FAE}.Release|iPhone.ActiveCfg = Release|iPhone
+		{686090D9-A241-48D4-A799-60E428E87FAE}.Release|iPhone.Build.0 = Release|iPhone
+		{686090D9-A241-48D4-A799-60E428E87FAE}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{686090D9-A241-48D4-A799-60E428E87FAE}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{686090D9-A241-48D4-A799-60E428E87FAE}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{686090D9-A241-48D4-A799-60E428E87FAE}.Debug|iPhone.Build.0 = Debug|iPhone
+	EndGlobalSection
+EndGlobal
