@@ -91,11 +91,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="ViewController\" />
+    <Folder Include="Storyboards\" />
+    <Folder Include="Models\" />
+    <Folder Include="ViewController\HomeViewController\" />
   </ItemGroup>
   <ItemGroup>
-    <InterfaceDefinition Include="LaunchScreen.storyboard" />
-    <InterfaceDefinition Include="Main.storyboard" />
     <InterfaceDefinition Include="Resources\RecipeDetailsViewController.xib" />
+    <InterfaceDefinition Include="Storyboards\LaunchScreen.storyboard" />
+    <InterfaceDefinition Include="Storyboards\Main.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -104,16 +108,16 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="HomeViewController.cs" />
-    <Compile Include="HomeViewController.designer.cs">
-      <DependentUpon>HomeViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="RecipeTableSource.cs" />
-    <Compile Include="RecipeDetailsViewController.cs" />
-    <Compile Include="RecipeDetailsViewController.designer.cs">
+    <Compile Include="ViewController\RecipeDetailsViewController.cs" />
+    <Compile Include="ViewController\RecipeDetailsViewController.designer.cs">
       <DependentUpon>RecipeDetailsViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Recipe.cs" />
+    <Compile Include="Models\Recipe.cs" />
+    <Compile Include="ViewController\HomeViewController\HomeViewController.cs" />
+    <Compile Include="ViewController\HomeViewController\HomeViewController.designer.cs">
+      <DependentUpon>HomeViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewController\HomeViewController\RecipeTableSource.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

@@ -4,13 +4,13 @@ using UIKit;
 
 namespace RecipeManager
 {
-	public class RecipeTableSource : UITableViewSource
+	public class RecipeTableViewSource : UITableViewSource
 	{
 		//protected List<string> recipeTableItems;
 		protected string cellIdentifier = "RecipeCell";
 		Recipe[] recipeTableItems;
 
-		public RecipeTableSource(Recipe[] recipeTableItems)
+		public RecipeTableViewSource(Recipe[] recipeTableItems)
 		{
 			this.recipeTableItems = recipeTableItems;
 		}

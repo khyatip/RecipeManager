@@ -44,7 +44,7 @@ namespace RecipeManager
 
 		protected void CreateTableItems()
 		{
-			RecipeTableView.Source = new RecipeTableSource(recipeTableItems.ToArray());
+			RecipeTableView.Source = new RecipeTableViewSource(recipeTableItems.ToArray());
 		}
 
 		partial void AddRecipeButtonSelected(Foundation.NSObject sender)
