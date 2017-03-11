@@ -20,13 +20,6 @@ namespace RecipeManager
 			return recipeTableItems.Length;
 		}
 
-		//public void AddRecipeToTable(UITableView tableView,string recipeTitle)
-		//{
-		//	UITableViewCell newCell;
-		//	newCell.TextLabel.Text = recipeTitle;
-		//	tableView.InsertRows(Foundation.NSIndexPath atIndexPaths, UITableViewRowAnimation withoutRowAnimation
-		//}
-
 		public override UITableViewCell GetCell(UITableView tableView, Foundation.NSIndexPath indexPath)
 		{
 			UITableViewCell cell = tableView.DequeueReusableCell(cellIdentifier);

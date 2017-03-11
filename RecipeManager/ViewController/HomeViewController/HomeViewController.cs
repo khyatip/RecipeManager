@@ -7,7 +7,6 @@ namespace RecipeManager
 {
 	public partial class HomeViewController : UIViewController
 	{
-
 		List<Recipe> recipeTableItems = new List<Recipe>();
 
 		protected HomeViewController(IntPtr handle) : base(handle)
@@ -29,15 +28,9 @@ namespace RecipeManager
 				var destinationController = segue.DestinationViewController as RecipeDetailsViewController;
 				if (destinationController != null)
 				{
-					destinationController.Delegate = this;
-					destinationController.CurrentRecipe = CreateNewRecipe();
+					destinationController.SetRecipe(this, CreateNewRecipe());
 				}
 			}
-		}
-
-		partial void AddRecipeButtonSelected(Foundation.NSObject sender)
-		{
-			
 		}
 
 		public Recipe CreateNewRecipe()
@@ -49,14 +42,13 @@ namespace RecipeManager
 			else 
 				newId = recipeTableItems[recipeTableItems.Count - 1].Id + 1;
 
-			var newRecipe = new Recipe { Id = newId};
-
-			return newRecipe;
+			return new Recipe { Id = newId};
 		}
 
-		public override void DidReceiveMemoryWarning()
+		public void SaveRecipe(Recipe recipe)
 		{
-			base.DidReceiveMemoryWarning();
+			recipeTableItems.Add(recipe);
+			RecipeTableView.Source = new RecipeTableViewSource(recipeTableItems.ToArray());
 		}
 	}
 }

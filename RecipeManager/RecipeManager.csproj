@@ -117,7 +117,7 @@
     <Compile Include="ViewController\HomeViewController\HomeViewController.designer.cs">
       <DependentUpon>HomeViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewController\HomeViewController\RecipeTableSource.cs" />
+    <Compile Include="ViewController\HomeViewController\RecipeTableViewSource.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
