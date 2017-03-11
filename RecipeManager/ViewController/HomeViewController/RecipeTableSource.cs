@@ -6,18 +6,13 @@ namespace RecipeManager
 {
 	public class RecipeTableViewSource : UITableViewSource
 	{
-		//protected List<string> recipeTableItems;
 		protected string cellIdentifier = "RecipeCell";
+
 		Recipe[] recipeTableItems;
 
 		public RecipeTableViewSource(Recipe[] recipeTableItems)
 		{
 			this.recipeTableItems = recipeTableItems;
-		}
-
-		public override nint NumberOfSections(UITableView tableView)
-		{
-			return 1;//base.NumberOfSections(tableView);
 		}
 
 		public override nint RowsInSection(UITableView tableview, nint section)
