@@ -18,6 +18,17 @@ namespace RecipeManager
 		{
 			Delegate = mainViewController;
 			currentRecipe = recipe;
+
+			//TODO: logic for view existing recipe
+			//if (currentRecipe.RecipeTitle != null)
+			//	RecipeTitleField.Text = currentRecipe.RecipeTitle;     
+
+			
+		}
+
+		partial void AddIngredientButtonSelected(Foundation.NSObject sender)
+		{
+			//currentRecipe.ingredients.Add(IngredientField.Text)
 		}
 
 		partial void RecipeSaveButtonSelected(Foundation.NSObject sender)

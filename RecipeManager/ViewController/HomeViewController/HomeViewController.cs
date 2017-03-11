@@ -18,17 +18,40 @@ namespace RecipeManager
 		{
 			base.ViewDidLoad();
 
+			RecipeTableView.ContentInset = new UIEdgeInsets(-40, 0, 0, 0);
 			RecipeTableView.Source = new RecipeTableViewSource(recipeTableItems.ToArray());
+
 		}
 
+		public override void ViewWillAppear(bool animated)
+		{
+			base.ViewWillAppear(animated);
+
+			NavigationController.NavigationBarHidden = true;
+		}
+
+
+		public override void ViewWillDisappear(bool animated)
+		{
+			base.ViewWillDisappear(animated);
+
+			NavigationController.NavigationBarHidden = false;
+		}
 		public override void PrepareForSegue(UIStoryboardSegue segue, Foundation.NSObject sender)
 		{
 			if (segue.Identifier == "RecipeDetailsSegue")
 			{
 				var destinationController = segue.DestinationViewController as RecipeDetailsViewController;
 				if (destinationController != null)
-				{
 					destinationController.SetRecipe(this, CreateNewRecipe());
+			}
+			else if (segue.Identifier == "RecipeCellSelected")
+			{
+				var destinationController = segue.DestinationViewController as RecipeDetailsViewController;
+				if (destinationController != null)
+				{
+					destinationController.SetRecipe(this, recipeTableItems[RecipeTableView.IndexPathForSelectedRow.Row
+]);
 				}
 			}
 		}

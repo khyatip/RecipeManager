@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace RecipeManager
 {
 	public class Recipe
@@ -7,6 +9,8 @@ namespace RecipeManager
 		public string RecipeTitle { get; set; }
 		public int CalorieCount { get; set; }
 		public double CookTime { get; set; }
+		public List<string> ingredients;
+		public List<string> recipeSteps;
 
 		public Recipe()
 		{
@@ -14,14 +18,18 @@ namespace RecipeManager
 			RecipeTitle = "";
 			CalorieCount = 0;
 			CookTime = 0.0;
+			ingredients = new List<string>();
+			recipeSteps = new List<string>();
 		}
 
-		public Recipe(int ID,string recipeTitle, int calorieCount, double cookTime)
+		public Recipe(int ID,string recipeTitle, int calorieCount, double cookTime, List<string> ingred, List<string> steps)
 		{
 			Id = ID;
 			RecipeTitle = recipeTitle;
 			CalorieCount = calorieCount;
 			CookTime = cookTime;
+			ingredients = ingred;
+			recipeSteps = steps;
 		}
 			
 
