@@ -18,11 +18,8 @@ namespace RecipeManager
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-			var width = View.Bounds.Width;
-			var height = View.Bounds.Height;
 
-			CreateTableItems();
-
+			RecipeTableView.Source = new RecipeTableViewSource(recipeTableItems.ToArray());
 		}
 
 		public override void PrepareForSegue(UIStoryboardSegue segue, Foundation.NSObject sender)
@@ -32,43 +29,29 @@ namespace RecipeManager
 				var destinationController = segue.DestinationViewController as RecipeDetailsViewController;
 				if (destinationController != null)
 				{
-					//var source = RecipeTableView.Source as RecipeTableSource;
-					//var rowPath = RecipeTableView.IndexPathForSelectedRow;
-					//var recipeItem = source.GetItem(rowPath.Row);
-					//destinationController.SetRecipe(this, recipeItem);
 					destinationController.Delegate = this;
+					destinationController.CurrentRecipe = CreateNewRecipe();
 				}
 			}
 		}
 
-
-		protected void CreateTableItems()
-		{
-			RecipeTableView.Source = new RecipeTableViewSource(recipeTableItems.ToArray());
-		}
-
 		partial void AddRecipeButtonSelected(Foundation.NSObject sender)
 		{
-			CreateRecipe();
+			
 		}
 
-		public void CreateRecipe()
+		public Recipe CreateNewRecipe()
 		{
 			int newId;
+
 			if (recipeTableItems.Count == 0)
 				newId = 0;
-			else newId = recipeTableItems[recipeTableItems.Count - 1].Id + 1;
+			else 
+				newId = recipeTableItems[recipeTableItems.Count - 1].Id + 1;
+
 			var newRecipe = new Recipe { Id = newId};
-			recipeTableItems.Add(newRecipe);
-			Console.WriteLine(newRecipe.ToString());
-			Console.WriteLine(recipeTableItems[newId].Id);
-			var detailsView = Storyboard.InstantiateViewController("recipeDetailsViewController") as RecipeDetailsViewController;
-			detailsView.SetRecipe(this, newRecipe);
-		}
 
-		public void SaveRecipe(Recipe recipe)
-		{
-
+			return newRecipe;
 		}
 
 		public override void DidReceiveMemoryWarning()
