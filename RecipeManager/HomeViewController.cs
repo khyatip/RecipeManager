@@ -5,12 +5,12 @@ using UIKit;
 
 namespace RecipeManager
 {
-	public partial class ViewController : UIViewController
+	public partial class HomeViewController : UIViewController
 	{
 
 		List<Recipe> recipeTableItems = new List<Recipe>();
 
-		protected ViewController(IntPtr handle) : base(handle)
+		protected HomeViewController(IntPtr handle) : base(handle)
 		{
 			// Note: this .ctor should not contain any initialization logic.
 		}

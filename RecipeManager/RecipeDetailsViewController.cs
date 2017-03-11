@@ -7,7 +7,7 @@ namespace RecipeManager
 	public partial class RecipeDetailsViewController : UIViewController
 	{
 		Recipe currentRecipe = new Recipe();
-		public ViewController Delegate { get; set;}
+		public HomeViewController Delegate { get; set;}
 
 		protected RecipeDetailsViewController(IntPtr handle) : base(handle)
 		{
@@ -20,7 +20,7 @@ namespace RecipeManager
 
 		}
 
-		public void SetRecipe(ViewController mainViewController, Recipe recipe)
+		public void SetRecipe(HomeViewController mainViewController, Recipe recipe)
 		{
 			Delegate = mainViewController;
 			currentRecipe = recipe;

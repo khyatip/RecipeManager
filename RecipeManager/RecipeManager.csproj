@@ -104,9 +104,9 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="ViewController.cs" />
-    <Compile Include="ViewController.designer.cs">
-      <DependentUpon>ViewController.cs</DependentUpon>
+    <Compile Include="HomeViewController.cs" />
+    <Compile Include="HomeViewController.designer.cs">
+      <DependentUpon>HomeViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="RecipeTableSource.cs" />
     <Compile Include="RecipeDetailsViewController.cs" />
