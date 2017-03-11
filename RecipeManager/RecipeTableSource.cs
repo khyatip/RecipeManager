@@ -6,10 +6,11 @@ namespace RecipeManager
 {
 	public class RecipeTableSource : UITableViewSource
 	{
-		protected List<string> recipeTableItems;
-		protected string cellIdentifier = "TableCell";
+		//protected List<string> recipeTableItems;
+		protected string cellIdentifier = "RecipeCell";
+		Recipe[] recipeTableItems;
 
-		public RecipeTableSource(List<string> recipeTableItems)
+		public RecipeTableSource(Recipe[] recipeTableItems)
 		{
 			this.recipeTableItems = recipeTableItems;
 		}
@@ -21,7 +22,7 @@ namespace RecipeManager
 
 		public override nint RowsInSection(UITableView tableview, nint section)
 		{
-			return recipeTableItems.Count;
+			return recipeTableItems.Length;
 		}
 
 		//public void AddRecipeToTable(UITableView tableView,string recipeTitle)
@@ -34,14 +35,19 @@ namespace RecipeManager
 		public override UITableViewCell GetCell(UITableView tableView, Foundation.NSIndexPath indexPath)
 		{
 			UITableViewCell cell = tableView.DequeueReusableCell(cellIdentifier);
-			string item = recipeTableItems[indexPath.Row];
-
 			if (cell == null)
-			{ cell = new UITableViewCell(UITableViewCellStyle.Default, cellIdentifier); }
+			{ 
+				cell = new UITableViewCell(UITableViewCellStyle.Default, cellIdentifier); 
+			}
 
-			cell.TextLabel.Text = item;
+			cell.TextLabel.Text = recipeTableItems[indexPath.Row].RecipeTitle;
 
 			return cell;
+		}
+
+		public Recipe GetItem(int id)
+		{
+			return recipeTableItems[id];
 		}
 	}
 }

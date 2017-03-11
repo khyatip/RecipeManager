@@ -8,8 +8,7 @@ namespace RecipeManager
 	public partial class ViewController : UIViewController
 	{
 
-		//UITableView recipeTable;
-		List<string> tableItems = new List<string>();
+		List<Recipe> recipeTableItems = new List<Recipe>();
 
 		protected ViewController(IntPtr handle) : base(handle)
 		{
@@ -23,22 +22,53 @@ namespace RecipeManager
 			var height = View.Bounds.Height;
 
 			CreateTableItems();
-			Add(RecipeTableView);
 
 		}
-		private static void Print(string s)
+
+		public override void PrepareForSegue(UIStoryboardSegue segue, Foundation.NSObject sender)
 		{
-			Console.WriteLine(s);
+			if (segue.Identifier == "RecipeDetailsSegue")
+			{
+				var destinationController = segue.DestinationViewController as RecipeDetailsViewController;
+				if (destinationController != null)
+				{
+					//var source = RecipeTableView.Source as RecipeTableSource;
+					//var rowPath = RecipeTableView.IndexPathForSelectedRow;
+					//var recipeItem = source.GetItem(rowPath.Row);
+					//destinationController.SetRecipe(this, recipeItem);
+					destinationController.Delegate = this;
+				}
+			}
 		}
+
 
 		protected void CreateTableItems()
 		{
-			
-			tableItems.Add("Apple");
-			tableItems.Add("Banana");
-			tableItems.Add("Carrots");
-			tableItems.Add("Something that starts with a D");
-			RecipeTableView.Source = new RecipeTableSource(tableItems);
+			RecipeTableView.Source = new RecipeTableSource(recipeTableItems.ToArray());
+		}
+
+		partial void AddRecipeButtonSelected(Foundation.NSObject sender)
+		{
+			CreateRecipe();
+		}
+
+		public void CreateRecipe()
+		{
+			int newId;
+			if (recipeTableItems.Count == 0)
+				newId = 0;
+			else newId = recipeTableItems[recipeTableItems.Count - 1].Id + 1;
+			var newRecipe = new Recipe { Id = newId};
+			recipeTableItems.Add(newRecipe);
+			Console.WriteLine(newRecipe.ToString());
+			Console.WriteLine(recipeTableItems[newId].Id);
+			var detailsView = Storyboard.InstantiateViewController("recipeDetailsViewController") as RecipeDetailsViewController;
+			detailsView.SetRecipe(this, newRecipe);
+		}
+
+		public void SaveRecipe(Recipe recipe)
+		{
+
 		}
 
 		public override void DidReceiveMemoryWarning()

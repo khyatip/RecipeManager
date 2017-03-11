@@ -17,6 +17,9 @@ namespace RecipeManager
 
 		[Outlet]
 		UIKit.UITableView RecipeTableView { get; set; }
+
+		[Action ("AddRecipeButtonSelected:")]
+		partial void AddRecipeButtonSelected (Foundation.NSObject sender);
 		
 		void ReleaseDesignerOutlets ()
 		{
