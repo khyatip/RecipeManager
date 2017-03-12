@@ -17,13 +17,18 @@ namespace RecipeManager
 		public void SetRecipe(HomeViewController mainViewController, Recipe recipe)
 		{
 			Delegate = mainViewController;
-			currentRecipe = recipe;
-
-			//TODO: logic for view existing recipe
-			//if (currentRecipe.RecipeTitle != null)
-			//	RecipeTitleField.Text = currentRecipe.RecipeTitle;     
-
+			currentRecipe = recipe;    
 			
+		}
+		public override void ViewWillAppear(bool animated)
+		{
+			base.ViewWillAppear(animated);
+			if (currentRecipe.RecipeTitle != null && currentRecipe.CalorieCount != 0 && currentRecipe.CookTime != 0.0)
+			{
+				RecipeTitleField.Text = currentRecipe.RecipeTitle;
+				CalorieCountField.Text = Convert.ToString(currentRecipe.CalorieCount);
+				CookTimeField.Text = Convert.ToString(currentRecipe.CookTime);
+			}
 		}
 
 		partial void AddIngredientButtonSelected(Foundation.NSObject sender)

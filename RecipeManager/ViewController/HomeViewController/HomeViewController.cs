@@ -39,19 +39,20 @@ namespace RecipeManager
 		}
 		public override void PrepareForSegue(UIStoryboardSegue segue, Foundation.NSObject sender)
 		{
+			var destinationController = segue.DestinationViewController as RecipeDetailsViewController;
 			if (segue.Identifier == "RecipeDetailsSegue")
 			{
-				var destinationController = segue.DestinationViewController as RecipeDetailsViewController;
+				
 				if (destinationController != null)
 					destinationController.SetRecipe(this, CreateNewRecipe());
 			}
 			else if (segue.Identifier == "RecipeCellSelected")
 			{
-				var destinationController = segue.DestinationViewController as RecipeDetailsViewController;
+				//var destinationController = segue.DestinationViewController as RecipeDetailsViewController;
 				if (destinationController != null)
 				{
-					destinationController.SetRecipe(this, recipeTableItems[RecipeTableView.IndexPathForSelectedRow.Row
-]);
+					Console.WriteLine(recipeTableItems[RecipeTableView.IndexPathForSelectedRow.Row].ToString());
+					destinationController.SetRecipe(this, recipeTableItems[RecipeTableView.IndexPathForSelectedRow.Row]);
 				}
 			}
 		}
