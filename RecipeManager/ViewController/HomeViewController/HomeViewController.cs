@@ -17,10 +17,8 @@ namespace RecipeManager
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-
 			RecipeTableView.ContentInset = new UIEdgeInsets(-40, 0, 0, 0);
 			RecipeTableView.Source = new RecipeTableViewSource(recipeTableItems.ToArray());
-
 		}
 
 		public override void ViewWillAppear(bool animated)
@@ -29,7 +27,6 @@ namespace RecipeManager
 
 			NavigationController.NavigationBarHidden = true;
 		}
-
 
 		public override void ViewWillDisappear(bool animated)
 		{
@@ -41,14 +38,12 @@ namespace RecipeManager
 		{
 			var destinationController = segue.DestinationViewController as RecipeDetailsViewController;
 			if (segue.Identifier == "RecipeDetailsSegue")
-			{
-				
+			{				
 				if (destinationController != null)
 					destinationController.SetRecipe(this, CreateNewRecipe());
 			}
 			else if (segue.Identifier == "RecipeCellSelected")
 			{
-				//var destinationController = segue.DestinationViewController as RecipeDetailsViewController;
 				if (destinationController != null)
 				{
 					Console.WriteLine(recipeTableItems[RecipeTableView.IndexPathForSelectedRow.Row].ToString());
@@ -69,10 +64,20 @@ namespace RecipeManager
 			return new Recipe { Id = newId};
 		}
 
-		public void SaveRecipe(Recipe recipe)
+		public int SaveRecipe(Recipe recipe)
 		{
-			recipeTableItems.Add(recipe);
+			int saveType = 0;
+			if (recipeTableItems.Exists(x => x.Id == recipe.Id))
+			{
+				recipeTableItems[recipe.Id] = recipe;
+			}
+			else
+			{
+				recipeTableItems.Add(recipe);
+				saveType = 1;
+			}
 			RecipeTableView.Source = new RecipeTableViewSource(recipeTableItems.ToArray());
+			return saveType;
 		}
 	}
 }
