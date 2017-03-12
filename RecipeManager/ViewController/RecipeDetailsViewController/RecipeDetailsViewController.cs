@@ -30,7 +30,7 @@ namespace RecipeManager
 		public override void ViewWillAppear(bool animated)
 		{
 			base.ViewWillAppear(animated);
-			if (currentRecipe.RecipeTitle != null && currentRecipe.CalorieCount != 0 && currentRecipe.CookTimeInMinutes != 0)
+			if (currentRecipe.RecipeTitle != "" && currentRecipe.CalorieCount != 0 && currentRecipe.CookTimeInMinutes != 0)
 			{
 				RecipeTitleField.Text = currentRecipe.RecipeTitle;
 				CalorieCountField.Text = Convert.ToString(currentRecipe.CalorieCount);
@@ -47,13 +47,22 @@ namespace RecipeManager
 
 		partial void AddIngredientButtonSelected(Foundation.NSObject sender)
 		{
-			ingredientsTableView.Add(new Ingredient(0, "Apple"));
-			ingredientsTableView.Add(new Ingredient(1, "Banana"));
+			int newIngredientId;
+			if (ingredientsTableView.Count == 0)
+				newIngredientId = 0;
+			else
+				newIngredientId = ingredientsTableView[ingredientsTableView.Count - 1].Id + 1;
 
-			IngredientsTableView.Source = new IngredientsTableViewSource(ingredientsTableView.ToArray());
-			IngredientsTableView.ReloadData();
+			if (IngredientField.Text != "")
+			{
+				ingredientsTableView.Add(new Ingredient(newIngredientId, IngredientField.Text));
+				IngredientField.Text = "";
+				IngredientsTableView.Source = new IngredientsTableViewSource(ingredientsTableView.ToArray());
+				IngredientsTableView.ReloadData();
+			}
+
 			foreach (Ingredient i in ingredientsTableView)
-				Console.WriteLine(i.ToString());		
+				Console.WriteLine(i.ToString());			
 
 		}
 
