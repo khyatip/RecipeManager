@@ -121,6 +121,8 @@
     </Compile>
     <Compile Include="ViewController\RecipeDetailsViewController\IngredientsTableViewSource.cs" />
     <Compile Include="Models\Ingredient.cs" />
+    <Compile Include="Models\Step.cs" />
+    <Compile Include="ViewController\RecipeDetailsViewController\StepsTableViewSource.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

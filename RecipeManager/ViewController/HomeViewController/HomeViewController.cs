@@ -24,10 +24,8 @@ namespace RecipeManager
 		public override void ViewWillAppear(bool animated)
 		{
 			base.ViewWillAppear(animated);
-
 			NavigationController.NavigationBarHidden = true;
 		}
-
 		public override void ViewWillDisappear(bool animated)
 		{
 			base.ViewWillDisappear(animated);
@@ -51,7 +49,6 @@ namespace RecipeManager
 				}
 			}
 		}
-
 		public Recipe CreateNewRecipe()
 		{
 			int newId;
@@ -63,7 +60,6 @@ namespace RecipeManager
 
 			return new Recipe { Id = newId};
 		}
-
 		public int SaveRecipe(Recipe recipe)
 		{
 			int saveType = 0;

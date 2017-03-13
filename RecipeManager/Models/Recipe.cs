@@ -10,7 +10,7 @@ namespace RecipeManager
 		public int CalorieCount { get; set; }
 		public int CookTimeInMinutes { get; set; }
 		public List<Ingredient> ingredients;
-		//public List<string> recipeSteps;
+		public List<Step> recipeSteps;
 
 		public Recipe()
 		{
@@ -19,17 +19,17 @@ namespace RecipeManager
 			CalorieCount = 0;
 			CookTimeInMinutes = 0;
 			ingredients = new List<Ingredient>();
-			//recipeSteps = new List<string>();
+			recipeSteps = new List<Step>();
 		}
 
-		public Recipe(int ID,string recipeTitle, int calorieCount, int cookTime, List<Ingredient> ingred)
+		public Recipe(int ID,string recipeTitle, int calorieCount, int cookTime, List<Ingredient> ingred, List<Step> steps)
 		{
 			Id = ID;
 			RecipeTitle = recipeTitle;
 			CalorieCount = calorieCount;
 			CookTimeInMinutes = cookTime;
 			ingredients = ingred;
-			//recipeSteps = steps;
+			recipeSteps = steps;
 		}
 			
 		public override string ToString()
