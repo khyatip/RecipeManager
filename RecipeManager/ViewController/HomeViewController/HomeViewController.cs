@@ -1,12 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Threading.Tasks;
 using CoreGraphics;
+using SQLite;
 using UIKit;
 
 namespace RecipeManager
 {
 	public partial class HomeViewController : UIViewController
 	{
+		private string _pathToDatabase;
 		List<Recipe> recipeTableItems = new List<Recipe>();
 
 		protected HomeViewController(IntPtr handle) : base(handle)
@@ -19,6 +24,14 @@ namespace RecipeManager
 			base.ViewDidLoad();
 			RecipeTableView.ContentInset = new UIEdgeInsets(-40, 0, 0, 0);
 			RecipeTableView.Source = new RecipeTableViewSource(recipeTableItems.ToArray());
+
+			var documents = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+			_pathToDatabase = Path.Combine(documents, "Recipes.db");
+			Console.WriteLine(_pathToDatabase);
+			using (var conn = new SQLite.SQLiteConnection(_pathToDatabase))
+			{
+				conn.CreateTable<Recipe>();
+			}
 		}
 
 		public override void ViewWillAppear(bool animated)
@@ -71,9 +84,14 @@ namespace RecipeManager
 			{
 				recipeTableItems.Add(recipe);
 				saveType = 1;
+				using (var db = new SQLite.SQLiteConnection(_pathToDatabase))
+				{
+					db.Insert(recipe);
+				}
 			}
 			RecipeTableView.Source = new RecipeTableViewSource(recipeTableItems.ToArray());
 			return saveType;
 		}
+
 	}
 }
