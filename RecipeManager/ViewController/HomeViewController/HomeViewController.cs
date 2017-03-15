@@ -21,12 +21,10 @@ namespace RecipeManager
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-
 			AddRecipeButton.TouchUpInside += (sender,ea) =>
 			{
 				AddRecipeButtonSelected();
 			};
-
 		}
 
 		public override void ViewWillAppear(bool animated)
@@ -68,6 +66,13 @@ namespace RecipeManager
 		{
 			AppDelegate.RecipesDB.SaveRecipe(recipe);
 			NavigationController.PopViewController(true);
+		}
+		public int GetNextRecipeID()
+		{
+			if (recipeTableItems.ToList().Count == 0)
+				return 1;
+			else
+				return recipeTableItems.ToList().Count + 1;
 		}
 
 	}

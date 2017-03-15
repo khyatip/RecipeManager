@@ -10,9 +10,9 @@ namespace RecipeManager
 		IList<Recipe> recipeTableItems;
 		protected string cellIdentifier = "RecipeCell";
 
-		public RecipeTableViewSource(IEnumerable<Recipe> recipeTableItems)
+		public RecipeTableViewSource(IEnumerable<Recipe> recipeItems)
 		{
-			this.recipeTableItems = recipeTableItems.ToList();
+			recipeTableItems = recipeItems.ToList();
 		}
 
 		public override nint RowsInSection(UITableView tableview, nint section)

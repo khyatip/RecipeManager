@@ -1,20 +1,23 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UIKit;
 
 namespace RecipeManager
 {
 	public class IngredientsTableViewSource : UITableViewSource
-	{
+	{		
+		IList<Ingredient> ingredientTableItems;
 		protected string cellIdentifier = "IngredientCell";
-		Ingredient[] ingredientTableItems;
 
-		public IngredientsTableViewSource(Ingredient[] ingredientItems)
+		public IngredientsTableViewSource(IEnumerable<Ingredient> ingredientItems)
 		{
-			ingredientTableItems = ingredientItems;
+			ingredientTableItems = ingredientItems.ToList();
 		}
 		public override nint RowsInSection(UITableView tableview, nint section)
 		{
-			return ingredientTableItems.Length;
+			return ingredientTableItems.Count;
 		}
 		public override UITableViewCell GetCell(UITableView tableView, Foundation.NSIndexPath indexPath)
 		{

@@ -12,12 +12,13 @@ namespace RecipeManager
 		public RecipesDatabase (string path) : base(path)
 		{
 			CreateTable<Recipe>();
+			CreateTable<Ingredient>();
 		}
 		public static string DatabaseFilePath
 		{
 			get
 			{
-				string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+				var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 				var path = Path.Combine(documentsPath, "Recipes.db");
 
 				return path;
@@ -56,6 +57,41 @@ namespace RecipeManager
 			lock(lockObject)
 			{
 				return Delete<Recipe>(recipeItem.Id);
+			}
+		}
+
+		public IEnumerable<Ingredient> GetIngredientsList(int recipeItemID)
+		{
+			lock (lockObject)
+			{
+				return (from i in Table<Ingredient>() where i.RecipeId == recipeItemID select i).ToList();
+			}
+		}
+		public Ingredient GetIngredient(int id)
+		{
+			lock (lockObject)
+			{
+				return Table<Ingredient>().FirstOrDefault(x => x.Id == id);
+			}
+		}
+		public int SaveIngredient(Ingredient ingredientItem)
+		{
+			lock (lockObject)
+			{
+				if (ingredientItem.Id != 0)
+				{
+					Update(ingredientItem);
+					return ingredientItem.Id;
+				}
+				else
+					return Insert(ingredientItem);
+			}
+		}
+		public int DeleteIngredient(Ingredient ingredientItem)
+		{
+			lock (lockObject)
+			{
+				return Delete(ingredientItem.Id);
 			}
 		}
 	}

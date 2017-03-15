@@ -7,8 +7,7 @@ namespace RecipeManager
 	public partial class RecipeDetailsViewController : UIViewController
 	{
 		Recipe currentRecipe { get; set; }
-		//List<Ingredient> ingredientsTableView = new List<Ingredient>();
-		//List<Step> stepsTableView = new List<Step>();
+		IEnumerable<Ingredient> ingredientsTableItems;
 		public HomeViewController Delegate { get; set; }
 
 		protected RecipeDetailsViewController(IntPtr handle) : base(handle)
@@ -28,39 +27,33 @@ namespace RecipeManager
 			RecipeTitleField.Text = currentRecipe.RecipeTitle;
 			CalorieCountField.Text = Convert.ToString(currentRecipe.CalorieCount);
 			CookTimeField.Text = Convert.ToString(currentRecipe.CookTimeInMinutes);
-			//if (currentRecipe.RecipeTitle != "" && currentRecipe.CalorieCount != 0 && currentRecipe.CookTimeInMinutes != 0)
-			//{
-			//	RecipeTitleField.Text = currentRecipe.RecipeTitle;
-			//	CalorieCountField.Text = Convert.ToString(currentRecipe.CalorieCount);
-			//	CookTimeField.Text = Convert.ToString(currentRecipe.CookTimeInMinutes);
-			//	if (currentRecipe.ingredients != null)
-			//	{
-			//		ingredientsTableView = currentRecipe.ingredients;
-			//		IngredientsTableView.Source = new IngredientsTableViewSource(ingredientsTableView.ToArray());
-			//	}
-			//	if (currentRecipe.recipeSteps != null)
-			//	{
-			//		stepsTableView = currentRecipe.recipeSteps;
-			//		RecipeStepsTableView.Source = new StepsTableViewSource(stepsTableView.ToArray());
-			//	}
-			//}
-		}
-		//partial void AddIngredientButtonSelected(Foundation.NSObject sender)
-		//{
-		//	int newIngredientId;
-		//	if (ingredientsTableView.Count == 0)
-		//		newIngredientId = 0;
-		//	else
-		//		newIngredientId = ingredientsTableView[ingredientsTableView.Count - 1].Id + 1;
 
-		//	if (IngredientField.Text != "")
-		//	{
-		//		ingredientsTableView.Add(new Ingredient(newIngredientId, IngredientField.Text));
-		//		IngredientField.Text = "";
-		//		IngredientsTableView.Source = new IngredientsTableViewSource(ingredientsTableView.ToArray());
-		//		IngredientsTableView.ReloadData();
-		//	}	
-		//}
+			ingredientsTableItems = AppDelegate.RecipesDB.GetIngredientsList(currentRecipe.Id);
+			IngredientsTableView.Source = new IngredientsTableViewSource(ingredientsTableItems);
+			IngredientsTableView.ReloadData();
+
+
+		}
+		partial void AddIngredientButtonSelected(Foundation.NSObject sender)
+		{
+			var newIngredient = new Ingredient();
+			if (IngredientField.Text != null && IngredientField.Text != "")
+			{
+				int recipeId;
+				if (currentRecipe.Id == 0) // this is a new recipe; not yet saved
+					recipeId = Delegate.GetNextRecipeID();
+				else
+					recipeId = currentRecipe.Id;
+				
+				newIngredient.RecipeId = recipeId;
+				newIngredient.IngredientTitle = IngredientField.Text;
+				AppDelegate.RecipesDB.SaveIngredient(newIngredient);
+				IngredientField.Text = "";
+				ingredientsTableItems = AppDelegate.RecipesDB.GetIngredientsList(currentRecipe.Id);
+				IngredientsTableView.Source = new IngredientsTableViewSource(ingredientsTableItems);
+				IngredientsTableView.ReloadData();
+			}
+		}
 		//partial void AddRecipeStepButtonSelected(Foundation.NSObject sender)
 		//{
 		//	int newStepId;
@@ -86,9 +79,7 @@ namespace RecipeManager
 				currentRecipe.CalorieCount = Convert.ToInt32(CalorieCountField.Text);
 			if (CookTimeField.Text != null && CookTimeField.Text != "")
 				currentRecipe.CookTimeInMinutes = Convert.ToInt32(CookTimeField.Text);
-
-
-
+			
 				Delegate.SaveRecipe(currentRecipe);
 				NavigationController.PopViewController(true);
 
