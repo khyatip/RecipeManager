@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UIKit;
 
 namespace RecipeManager
@@ -8,6 +9,7 @@ namespace RecipeManager
 	{
 		Recipe currentRecipe { get; set; }
 		IEnumerable<Ingredient> ingredientsTableItems;
+		IEnumerable<Step>stepsTableItems;
 		public HomeViewController Delegate { get; set; }
 
 		protected RecipeDetailsViewController(IntPtr handle) : base(handle)
@@ -18,6 +20,13 @@ namespace RecipeManager
 		{
 			Delegate = homeViewController;
 			currentRecipe = recipe;    	
+		}
+		public int GetNextStepNumber()
+		{
+			if (stepsTableItems.ToList().Count == 0)
+				return 1;
+			else
+				return stepsTableItems.ToList().Count + 1;
 		}
 		public override void ViewWillAppear(bool animated)
 		{
@@ -32,6 +41,9 @@ namespace RecipeManager
 			IngredientsTableView.Source = new IngredientsTableViewSource(ingredientsTableItems);
 			IngredientsTableView.ReloadData();
 
+			stepsTableItems = AppDelegate.RecipesDB.GetStepsList(currentRecipe.Id);
+			RecipeStepsTableView.Source = new StepsTableViewSource(stepsTableItems);
+			RecipeStepsTableView.ReloadData();
 
 		}
 		partial void AddIngredientButtonSelected(Foundation.NSObject sender)
@@ -49,27 +61,32 @@ namespace RecipeManager
 				newIngredient.IngredientTitle = IngredientField.Text;
 				AppDelegate.RecipesDB.SaveIngredient(newIngredient);
 				IngredientField.Text = "";
-				ingredientsTableItems = AppDelegate.RecipesDB.GetIngredientsList(currentRecipe.Id);
+				ingredientsTableItems = AppDelegate.RecipesDB.GetIngredientsList(recipeId);
 				IngredientsTableView.Source = new IngredientsTableViewSource(ingredientsTableItems);
 				IngredientsTableView.ReloadData();
 			}
 		}
-		//partial void AddRecipeStepButtonSelected(Foundation.NSObject sender)
-		//{
-		//	int newStepId;
-		//	if (stepsTableView.Count == 0)
-		//		newStepId = 0;
-		//	else
-		//		newStepId = stepsTableView[stepsTableView.Count - 1].Id + 1;
+		partial void AddRecipeStepButtonSelected(Foundation.NSObject sender)
+		{
+			var newStep = new Step();
+			if (RecipeStepField.Text != null && RecipeStepField.Text != "")
+			{
+				int recipeId;
+				int stepCount = GetNextStepNumber();
+				if (currentRecipe.Id == 0) // this is a new recipe; not yet saved
+					recipeId = Delegate.GetNextRecipeID();
+				else
+					recipeId = currentRecipe.Id;
 
-		//	if (RecipeStepField.Text != "")
-		//	{
-		//		stepsTableView.Add(new Step(newStepId, (stepsTableView.Count+1 + ". " + RecipeStepField.Text)));
-		//		RecipeStepField.Text = "";
-		//		RecipeStepsTableView.Source = new StepsTableViewSource(stepsTableView.ToArray());
-		//		RecipeStepsTableView.ReloadData();
-		//	}
-		//}
+				newStep.RecipeId = recipeId;
+				newStep.StepDetail = stepCount + ". " + RecipeStepField.Text;
+				AppDelegate.RecipesDB.SaveStep(newStep);
+				RecipeStepField.Text = "";
+				stepsTableItems = AppDelegate.RecipesDB.GetStepsList(recipeId);
+				RecipeStepsTableView.Source = new StepsTableViewSource(stepsTableItems);
+				RecipeStepsTableView.ReloadData();
+			}
+		}
 		partial void RecipeSaveButtonSelected(Foundation.NSObject sender)
 		{
 			// TODO: Error Handling 

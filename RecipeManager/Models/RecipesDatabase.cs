@@ -13,6 +13,7 @@ namespace RecipeManager
 		{
 			CreateTable<Recipe>();
 			CreateTable<Ingredient>();
+			CreateTable<Step>();
 		}
 		public static string DatabaseFilePath
 		{
@@ -57,9 +58,9 @@ namespace RecipeManager
 			lock(lockObject)
 			{
 				return Delete<Recipe>(recipeItem.Id);
+				//TODO: add cleanup for corresponding ingredients and steps
 			}
 		}
-
 		public IEnumerable<Ingredient> GetIngredientsList(int recipeItemID)
 		{
 			lock (lockObject)
@@ -92,6 +93,40 @@ namespace RecipeManager
 			lock (lockObject)
 			{
 				return Delete(ingredientItem.Id);
+			}
+		}
+		public IEnumerable<Step> GetStepsList(int recipeItemID)
+		{
+			lock (lockObject)
+			{
+				return (from i in Table<Step>() where i.RecipeId == recipeItemID select i).ToList();
+			}
+		}
+		public Step GetStep(int id)
+		{
+			lock (lockObject)
+			{
+				return Table<Step>().FirstOrDefault(x => x.Id == id);
+			}
+		}
+		public int SaveStep(Step stepItem)
+		{
+			lock (lockObject)
+			{
+				if (stepItem.Id != 0)
+				{
+					Update(stepItem);
+					return stepItem.Id;
+				}
+				else
+					return Insert(stepItem);
+			}
+		}
+		public int DeleteStep(Step stepItem)
+		{
+			lock (lockObject)
+			{
+				return Delete(stepItem.Id);
 			}
 		}
 	}

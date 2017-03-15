@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
-using CoreGraphics;
-using SQLite;
 using UIKit;
 
 namespace RecipeManager
@@ -21,7 +16,7 @@ namespace RecipeManager
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-			AddRecipeButton.TouchUpInside += (sender,ea) =>
+			AddRecipeButton.TouchUpInside += (sender, ea) =>
 			{
 				AddRecipeButtonSelected();
 			};
@@ -45,14 +40,14 @@ namespace RecipeManager
 
 		public override void PrepareForSegue(UIStoryboardSegue segue, Foundation.NSObject sender)
 		{
-				var navctlr = segue.DestinationViewController as RecipeDetailsViewController;
-				if (navctlr != null)
-				{
-					var source = RecipeTableView.Source as RecipeTableViewSource;
-					var rowPath = RecipeTableView.IndexPathForSelectedRow;
-					var item = source.GetItem(rowPath.Row);
-					navctlr.SetRecipe(this, item);
-				}
+			var navctlr = segue.DestinationViewController as RecipeDetailsViewController;
+			if (navctlr != null)
+			{
+				var source = RecipeTableView.Source as RecipeTableViewSource;
+				var rowPath = RecipeTableView.IndexPathForSelectedRow;
+				var item = source.GetItem(rowPath.Row);
+				navctlr.SetRecipe(this, item);
+			}
 		}
 
 		public void AddRecipeButtonSelected()
@@ -74,6 +69,5 @@ namespace RecipeManager
 			else
 				return recipeTableItems.ToList().Count + 1;
 		}
-
 	}
 }

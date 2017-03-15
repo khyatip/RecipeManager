@@ -1,121 +1,137 @@
 // WARNING
 //
-// This file has been generated automatically by Xamarin Studio to store outlets and
-// actions made in the UI designer. If it is removed, they will be lost.
-// Manual changes to this file may not be handled correctly.
+// This file has been generated automatically by Xamarin Studio from the outlets and
+// actions declared in your storyboard file.
+// Manual changes to this file will not be maintained.
 //
 using Foundation;
+using System;
 using System.CodeDom.Compiler;
 
 namespace RecipeManager
 {
-	[Register ("RecipeDetailsViewController")]
-	partial class RecipeDetailsViewController
-	{
-		[Outlet]
-		UIKit.UIButton AddIngredientButton { get; set; }
+    [Register ("RecipeDetailsViewController")]
+    partial class RecipeDetailsViewController
+    {
+        [Outlet]
+        UIKit.UIButton AddIngredientButton { get; set; }
 
-		[Outlet]
-		UIKit.UIButton AddRecipeStepButton { get; set; }
 
-		[Outlet]
-		UIKit.UITextField CalorieCountField { get; set; }
+        [Outlet]
+        UIKit.UIButton AddRecipeStepButton { get; set; }
 
-		[Outlet]
-		UIKit.UITextField CookTimeField { get; set; }
 
-		[Outlet]
-		UIKit.UITextField IngredientField { get; set; }
+        [Outlet]
+        UIKit.UITextField CalorieCountField { get; set; }
 
-		[Outlet]
-		UIKit.UITableView IngredientsTableView { get; set; }
 
-		[Outlet]
-		UIKit.UIButton RecipeSaveButton { get; set; }
+        [Outlet]
+        UIKit.UITextField CookTimeField { get; set; }
 
-		[Outlet]
-		UIKit.UITextField RecipeStepField { get; set; }
 
-		[Outlet]
-		UIKit.UITableView RecipeStepsTableView { get; set; }
+        [Outlet]
+        UIKit.UITextField IngredientField { get; set; }
 
-		[Outlet]
-		UIKit.UITextField RecipeTitleField { get; set; }
 
-		[Outlet]
-		UIKit.UIView ViewContainingIngredients { get; set; }
+        [Outlet]
+        UIKit.UITableView IngredientsTableView { get; set; }
 
-		[Action ("AddIngredientButtonSelected:")]
-		partial void AddIngredientButtonSelected (Foundation.NSObject sender);
 
-		[Action ("AddRecipeStepButtonSelected:")]
-		partial void AddRecipeStepButtonSelected (Foundation.NSObject sender);
+        [Outlet]
+        UIKit.UIButton RecipeSaveButton { get; set; }
 
-		[Action ("AddStepButtonSelected:")]
-		partial void AddStepButtonSelected (Foundation.NSObject sender);
 
-		[Action ("RecipeDoneButton:")]
-		partial void RecipeDoneButton (Foundation.NSObject sender);
+        [Outlet]
+        UIKit.UITextField RecipeStepField { get; set; }
 
-		[Action ("RecipeSaveButtonSelected:")]
-		partial void RecipeSaveButtonSelected (Foundation.NSObject sender);
-		
-		void ReleaseDesignerOutlets ()
-		{
-			if (ViewContainingIngredients != null) {
-				ViewContainingIngredients.Dispose ();
-				ViewContainingIngredients = null;
-			}
 
-			if (AddIngredientButton != null) {
-				AddIngredientButton.Dispose ();
-				AddIngredientButton = null;
-			}
+        [Outlet]
+        UIKit.UITableView RecipeStepsTableView { get; set; }
 
-			if (AddRecipeStepButton != null) {
-				AddRecipeStepButton.Dispose ();
-				AddRecipeStepButton = null;
-			}
 
-			if (CalorieCountField != null) {
-				CalorieCountField.Dispose ();
-				CalorieCountField = null;
-			}
+        [Outlet]
+        UIKit.UITextField RecipeTitleField { get; set; }
 
-			if (CookTimeField != null) {
-				CookTimeField.Dispose ();
-				CookTimeField = null;
-			}
 
-			if (IngredientField != null) {
-				IngredientField.Dispose ();
-				IngredientField = null;
-			}
+        [Outlet]
+        UIKit.UIView ViewContainingIngredients { get; set; }
 
-			if (IngredientsTableView != null) {
-				IngredientsTableView.Dispose ();
-				IngredientsTableView = null;
-			}
 
-			if (RecipeSaveButton != null) {
-				RecipeSaveButton.Dispose ();
-				RecipeSaveButton = null;
-			}
+        [Action ("AddIngredientButtonSelected:")]
+        partial void AddIngredientButtonSelected (Foundation.NSObject sender);
 
-			if (RecipeStepField != null) {
-				RecipeStepField.Dispose ();
-				RecipeStepField = null;
-			}
 
-			if (RecipeStepsTableView != null) {
-				RecipeStepsTableView.Dispose ();
-				RecipeStepsTableView = null;
-			}
+        [Action ("AddRecipeStepButtonSelected:")]
+        partial void AddRecipeStepButtonSelected (Foundation.NSObject sender);
 
-			if (RecipeTitleField != null) {
-				RecipeTitleField.Dispose ();
-				RecipeTitleField = null;
-			}
-		}
-	}
+
+        [Action ("AddStepButtonSelected:")]
+        partial void AddStepButtonSelected (Foundation.NSObject sender);
+
+
+        [Action ("RecipeDoneButton:")]
+        partial void RecipeDoneButton (Foundation.NSObject sender);
+
+
+        [Action ("RecipeSaveButtonSelected:")]
+        partial void RecipeSaveButtonSelected (Foundation.NSObject sender);
+
+        void ReleaseDesignerOutlets ()
+        {
+            if (AddIngredientButton != null) {
+                AddIngredientButton.Dispose ();
+                AddIngredientButton = null;
+            }
+
+            if (AddRecipeStepButton != null) {
+                AddRecipeStepButton.Dispose ();
+                AddRecipeStepButton = null;
+            }
+
+            if (CalorieCountField != null) {
+                CalorieCountField.Dispose ();
+                CalorieCountField = null;
+            }
+
+            if (CookTimeField != null) {
+                CookTimeField.Dispose ();
+                CookTimeField = null;
+            }
+
+            if (IngredientField != null) {
+                IngredientField.Dispose ();
+                IngredientField = null;
+            }
+
+            if (IngredientsTableView != null) {
+                IngredientsTableView.Dispose ();
+                IngredientsTableView = null;
+            }
+
+            if (RecipeSaveButton != null) {
+                RecipeSaveButton.Dispose ();
+                RecipeSaveButton = null;
+            }
+
+            if (RecipeStepField != null) {
+                RecipeStepField.Dispose ();
+                RecipeStepField = null;
+            }
+
+            if (RecipeStepsTableView != null) {
+                RecipeStepsTableView.Dispose ();
+                RecipeStepsTableView = null;
+            }
+
+            if (RecipeTitleField != null) {
+                RecipeTitleField.Dispose ();
+                RecipeTitleField = null;
+            }
+
+            if (ViewContainingIngredients != null) {
+                ViewContainingIngredients.Dispose ();
+                ViewContainingIngredients = null;
+            }
+        }
+    }
 }
