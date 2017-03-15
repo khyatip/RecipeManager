@@ -142,6 +142,7 @@
     <Compile Include="Models\Step.cs" />
     <Compile Include="ViewController\RecipeDetailsViewController\StepsTableViewSource.cs" />
     <Compile Include="RecipesDBTable.cs" />
+    <Compile Include="Models\RecipesDatabase.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

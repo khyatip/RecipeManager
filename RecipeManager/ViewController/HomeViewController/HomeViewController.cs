@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using CoreGraphics;
 using SQLite;
@@ -11,9 +12,7 @@ namespace RecipeManager
 {
 	public partial class HomeViewController : UIViewController
 	{
-		private string _pathToDatabase;
-		List<Recipe> recipeTableItems = new List<Recipe>();
-
+		IEnumerable<Recipe> recipeTableItems;
 		protected HomeViewController(IntPtr handle) : base(handle)
 		{
 			// Note: this .ctor should not contain any initialization logic.
@@ -22,75 +21,53 @@ namespace RecipeManager
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-			RecipeTableView.ContentInset = new UIEdgeInsets(-40, 0, 0, 0);
-			RecipeTableView.Source = new RecipeTableViewSource(recipeTableItems.ToArray());
 
-			var documents = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-			_pathToDatabase = Path.Combine(documents, "Recipes.db");
-			Console.WriteLine(_pathToDatabase);
-			using (var conn = new SQLite.SQLiteConnection(_pathToDatabase))
+			AddRecipeButton.TouchUpInside += (sender,ea) =>
 			{
-				conn.CreateTable<Recipe>();
-			}
+				AddRecipeButtonSelected();
+			};
+
 		}
 
 		public override void ViewWillAppear(bool animated)
 		{
 			base.ViewWillAppear(animated);
 			NavigationController.NavigationBarHidden = true;
+			RecipeTableView.ContentInset = new UIEdgeInsets(-40, 0, 0, 0);
+			recipeTableItems = AppDelegate.RecipesDB.GetRecipesList();
+			RecipeTableView.Source = new RecipeTableViewSource(recipeTableItems);
+			RecipeTableView.ReloadData();
 		}
+
 		public override void ViewWillDisappear(bool animated)
 		{
 			base.ViewWillDisappear(animated);
-
 			NavigationController.NavigationBarHidden = false;
 		}
+
 		public override void PrepareForSegue(UIStoryboardSegue segue, Foundation.NSObject sender)
 		{
-			var destinationController = segue.DestinationViewController as RecipeDetailsViewController;
-			if (segue.Identifier == "RecipeDetailsSegue")
-			{				
-				if (destinationController != null)
-					destinationController.SetRecipe(this, CreateNewRecipe());
-			}
-			else if (segue.Identifier == "RecipeCellSelected")
-			{
-				if (destinationController != null)
+				var navctlr = segue.DestinationViewController as RecipeDetailsViewController;
+				if (navctlr != null)
 				{
-					Console.WriteLine(recipeTableItems[RecipeTableView.IndexPathForSelectedRow.Row].ToString());
-					destinationController.SetRecipe(this, recipeTableItems[RecipeTableView.IndexPathForSelectedRow.Row]);
+					var source = RecipeTableView.Source as RecipeTableViewSource;
+					var rowPath = RecipeTableView.IndexPathForSelectedRow;
+					var item = source.GetItem(rowPath.Row);
+					navctlr.SetRecipe(this, item);
 				}
-			}
 		}
-		public Recipe CreateNewRecipe()
+
+		public void AddRecipeButtonSelected()
 		{
-			int newId;
-
-			if (recipeTableItems.Count == 0)
-				newId = 0;
-			else 
-				newId = recipeTableItems[recipeTableItems.Count - 1].Id + 1;
-
-			return new Recipe { Id = newId};
+			var detail = Storyboard.InstantiateViewController("RecipeDetails") as RecipeDetailsViewController;
+			detail.Delegate = this;
+			NavigationController.PushViewController(detail, true);
 		}
-		public int SaveRecipe(Recipe recipe)
+
+		public void SaveRecipe(Recipe recipe)
 		{
-			int saveType = 0;
-			if (recipeTableItems.Exists(x => x.Id == recipe.Id))
-			{
-				recipeTableItems[recipe.Id] = recipe;
-			}
-			else
-			{
-				recipeTableItems.Add(recipe);
-				saveType = 1;
-				using (var db = new SQLite.SQLiteConnection(_pathToDatabase))
-				{
-					db.Insert(recipe);
-				}
-			}
-			RecipeTableView.Source = new RecipeTableViewSource(recipeTableItems.ToArray());
-			return saveType;
+			AppDelegate.RecipesDB.SaveRecipe(recipe);
+			NavigationController.PopViewController(true);
 		}
 
 	}

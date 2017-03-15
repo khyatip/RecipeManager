@@ -1,23 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UIKit;
 
 namespace RecipeManager
 {
 	public class RecipeTableViewSource : UITableViewSource
 	{
+		IList<Recipe> recipeTableItems;
 		protected string cellIdentifier = "RecipeCell";
 
-		Recipe[] recipeTableItems;
-
-		public RecipeTableViewSource(Recipe[] recipeTableItems)
+		public RecipeTableViewSource(IEnumerable<Recipe> recipeTableItems)
 		{
-			this.recipeTableItems = recipeTableItems;
+			this.recipeTableItems = recipeTableItems.ToList();
 		}
 
 		public override nint RowsInSection(UITableView tableview, nint section)
 		{
-			return recipeTableItems.Length;
+			return recipeTableItems.Count;
 		}
 
 		public override UITableViewCell GetCell(UITableView tableView, Foundation.NSIndexPath indexPath)
@@ -30,14 +30,6 @@ namespace RecipeManager
 
 			return cell;
 		}
-
-		//public override void RowSelected(UITableView tableView, Foundation.NSIndexPath indexPath)
-		//{
-		//	//base.RowSelected(tableView, indexPath);
-		//	new UIAlertView("Row Selected"
-		//	                , recipeTableItems[indexPath.Row].RecipeTitle, null, "OK", null).Show();
-		//	tableView.DeselectRow(indexPath, true);
-		//}
 
 		public Recipe GetItem(int id)
 		{
