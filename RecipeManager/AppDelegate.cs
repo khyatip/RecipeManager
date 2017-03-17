@@ -9,7 +9,7 @@ namespace RecipeManager
 	public class AppDelegate : UIApplicationDelegate
 	{
 		// class-level declarations
-
+		public static RecipesDatabase RecipesDB;
 		public override UIWindow Window
 		{
 			get;
@@ -18,9 +18,7 @@ namespace RecipeManager
 
 		public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
 		{
-			// Override point for customization after application launch.
-			// If not required for your application you can safely delete this method
-
+			RecipesDB = new RecipesDatabase(RecipesDatabase.DatabaseFilePath);
 			return true;
 		}
 
