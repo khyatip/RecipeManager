@@ -61,6 +61,27 @@ namespace RecipeManager
 				//TODO: add cleanup for corresponding ingredients and steps
 			}
 		}
+		public IEnumerable<Recipe> SearchByRecipeTitle(string searchString)
+		{
+			lock (lockObject)
+			{
+				return (from i in Table<Recipe>() where i.RecipeTitle == searchString select i).ToList();
+			}
+		}
+		public IEnumerable<Recipe> SearchByCalories(int searchCalories)
+		{
+			lock (lockObject)
+			{
+				return (from i in Table<Recipe>() where i.CalorieCount == searchCalories select i).ToList();
+			}
+		}
+		public IEnumerable<Recipe> SearchByCookTime(int searchCookTime)
+		{
+			lock (lockObject)
+			{
+				return (from i in Table<Recipe>() where i.CookTimeInMinutes == searchCookTime select i).ToList();
+			}
+		}
 		public IEnumerable<Ingredient> GetIngredientsList(int recipeItemID)
 		{
 			lock (lockObject)

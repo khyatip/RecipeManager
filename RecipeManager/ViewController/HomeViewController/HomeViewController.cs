@@ -25,8 +25,8 @@ namespace RecipeManager
 		public override void ViewWillAppear(bool animated)
 		{
 			base.ViewWillAppear(animated);
-			NavigationController.NavigationBarHidden = true;
-			RecipeTableView.ContentInset = new UIEdgeInsets(-40, 0, 0, 0);
+			//NavigationController.NavigationBarHidden = true;
+			RecipeTableView.ContentInset = new UIEdgeInsets(-100, 0, 0, 0);
 			recipeTableItems = AppDelegate.RecipesDB.GetRecipesList();
 			RecipeTableView.Source = new RecipeTableViewSource(recipeTableItems);
 			RecipeTableView.ReloadData();
