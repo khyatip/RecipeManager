@@ -38,9 +38,13 @@
                                             <action selector="CookTimeFilterButtonSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DrI-JO-HaQ"/>
                                         </connections>
                                     </button>
-                                    <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="TV0-bA-dVs">
+                                    <searchBar contentMode="redraw" placeholder="Search by title, calories, or cook time" translatesAutoresizingMaskIntoConstraints="NO" id="TV0-bA-dVs">
                                         <rect key="frame" x="0.0" y="30" width="375" height="44"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <scopeButtonTitles>
+                                            <string>Title</string>
+                                            <string>Title</string>
+                                        </scopeButtonTitles>
                                     </searchBar>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D92-YI-3my">
                                         <rect key="frame" x="140.5" y="0.0" width="94" height="30"/>
@@ -110,6 +114,7 @@
                         <outlet property="RecipeTableView" destination="UEH-i2-V2z" id="LJQ-mK-fg5"/>
                         <outlet property="RecipeTitleFilterButton" destination="kov-Id-Tb4" id="QFI-hM-5zv"/>
                         <outlet property="SearchBar" destination="TV0-bA-dVs" id="a2F-0M-mL9"/>
+                        <outlet property="SearchTextField" destination="TV0-bA-dVs" id="8P6-ZV-tKO"/>
                         <segue destination="9" kind="showDetail" identifier="RecipeDetailsSegue" id="MXy-Uq-6HA"/>
                     </connections>
                 </viewController>

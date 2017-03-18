@@ -30,6 +30,9 @@ namespace RecipeManager
 		[Outlet]
 		UIKit.UISearchBar SearchBar { get; set; }
 
+		[Outlet]
+		UIKit.UISearchBar SearchTextField { get; set; }
+
 		[Action ("AddRecipeButtonSelected:")]
 		partial void AddRecipeButtonSelected (Foundation.NSObject sender);
 
@@ -44,9 +47,9 @@ namespace RecipeManager
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (RecipeTitleFilterButton != null) {
-				RecipeTitleFilterButton.Dispose ();
-				RecipeTitleFilterButton = null;
+			if (AddRecipeButton != null) {
+				AddRecipeButton.Dispose ();
+				AddRecipeButton = null;
 			}
 
 			if (CalorieCountFilterButton != null) {
@@ -59,19 +62,24 @@ namespace RecipeManager
 				CookTimeFilterButton = null;
 			}
 
-			if (SearchBar != null) {
-				SearchBar.Dispose ();
-				SearchBar = null;
-			}
-
-			if (AddRecipeButton != null) {
-				AddRecipeButton.Dispose ();
-				AddRecipeButton = null;
-			}
-
 			if (RecipeTableView != null) {
 				RecipeTableView.Dispose ();
 				RecipeTableView = null;
+			}
+
+			if (RecipeTitleFilterButton != null) {
+				RecipeTitleFilterButton.Dispose ();
+				RecipeTitleFilterButton = null;
+			}
+
+			if (SearchTextField != null) {
+				SearchTextField.Dispose ();
+				SearchTextField = null;
+			}
+
+			if (SearchBar != null) {
+				SearchBar.Dispose ();
+				SearchBar = null;
 			}
 		}
 	}
