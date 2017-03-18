@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleName</key>
-	<string>RecipeManager</string>
+	<string>REM</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.khyatipatel.recipemanager</string>
 	<key>CFBundleShortVersionString</key>

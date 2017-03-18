@@ -11,10 +11,17 @@ namespace RecipeManager
 		IEnumerable<Ingredient> ingredientsTableItems;
 		IEnumerable<Step>stepsTableItems;
 		public HomeViewController Delegate { get; set; }
+		//public HomeViewController DelegateHome { get; set; }
+		//public SearchResultsViewController DelegateSearch  {get; set; }
 
 		protected RecipeDetailsViewController(IntPtr handle) : base(handle)
 		{
 			// Note: this .ctor should not contain any initialization logic.
+		}
+		public override void ViewDidLoad()
+		{
+			base.ViewDidLoad();
+			Title = "Details";
 		}
 		public void SetRecipe(HomeViewController homeViewController, Recipe recipe)
 		{
