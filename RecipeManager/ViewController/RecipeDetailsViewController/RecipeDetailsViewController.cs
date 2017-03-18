@@ -11,6 +11,8 @@ namespace RecipeManager
 		IEnumerable<Ingredient> ingredientsTableItems;
 		IEnumerable<Step>stepsTableItems;
 		public HomeViewController Delegate { get; set; }
+		//public HomeViewController DelegateHome { get; set; }
+		//public SearchResultsViewController DelegateSearch  {get; set; }
 
 		protected RecipeDetailsViewController(IntPtr handle) : base(handle)
 		{
