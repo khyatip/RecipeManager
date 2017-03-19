@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="NRT-S9-NN7">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
@@ -18,10 +18,10 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kfh-15-EbK">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kfh-15-EbK" misplaced="YES">
                                 <rect key="frame" x="0.0" y="64" width="375" height="74"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kov-Id-Tb4">
@@ -31,14 +31,14 @@
                                             <action selector="RecipeTitleFilterButtonSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kfr-FE-RsP"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6hu-EN-sLe">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6hu-EN-sLe" misplaced="YES">
                                         <rect key="frame" x="293" y="0.0" width="74" height="30"/>
                                         <state key="normal" title="Cook Time"/>
                                         <connections>
                                             <action selector="CookTimeFilterButtonSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DrI-JO-HaQ"/>
                                         </connections>
                                     </button>
-                                    <searchBar contentMode="redraw" placeholder="Search by title, calories, or cook time" translatesAutoresizingMaskIntoConstraints="NO" id="TV0-bA-dVs">
+                                    <searchBar contentMode="redraw" placeholder="Search by title, calories, or cook time" translatesAutoresizingMaskIntoConstraints="NO" id="TV0-bA-dVs" misplaced="YES">
                                         <rect key="frame" x="0.0" y="30" width="375" height="44"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <scopeButtonTitles>
@@ -46,7 +46,7 @@
                                             <string>Title</string>
                                         </scopeButtonTitles>
                                     </searchBar>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D92-YI-3my">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D92-YI-3my" misplaced="YES">
                                         <rect key="frame" x="140.5" y="0.0" width="94" height="30"/>
                                         <state key="normal" title="Calorie Count"/>
                                         <connections>
@@ -68,15 +68,15 @@
                                     <constraint firstItem="kov-Id-Tb4" firstAttribute="leading" secondItem="kfh-15-EbK" secondAttribute="leading" constant="8" id="fja-Bd-G5k"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="UEH-i2-V2z">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="UEH-i2-V2z" misplaced="YES">
                                 <rect key="frame" x="0.0" y="138" width="375" height="464"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RecipeCell" id="dBg-na-33q">
-                                        <rect key="frame" x="0.0" y="56" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dBg-na-33q" id="p2Z-l5-HwJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
@@ -86,7 +86,7 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YdX-fR-rhK">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YdX-fR-rhK" misplaced="YES">
                                 <rect key="frame" x="0.0" y="607" width="375" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <state key="normal" title="+"/>
@@ -120,7 +120,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="831.20000000000005" y="19.340329835082461"/>
+            <point key="canvasLocation" x="831.2" y="19.34033"/>
         </scene>
         <!--Recipe Details View Controller-->
         <scene sceneID="8">
@@ -131,10 +131,10 @@
                         <viewControllerLayoutGuide type="bottom" id="7"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="10">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l2P-xb-Qak">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l2P-xb-Qak" misplaced="YES">
                                 <rect key="frame" x="0.0" y="607" width="375" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <state key="normal" title="✓"/>
@@ -148,7 +148,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="hbV-uf-r2P">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="771"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i5h-mc-GaA">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i5h-mc-GaA" misplaced="YES">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="257"/>
                                                 <subviews>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xNI-We-czy">
@@ -208,7 +208,7 @@
                                                     <constraint firstItem="Vz1-V3-5mU" firstAttribute="leading" secondItem="i5h-mc-GaA" secondAttribute="leading" constant="8" id="xtw-gF-SIY"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="C88-DQ-Zob">
+                                            <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="C88-DQ-Zob" misplaced="YES">
                                                 <rect key="frame" x="0.0" y="257" width="375" height="257"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredients" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9T6-WS-xVW">
@@ -256,7 +256,7 @@
                                                     <constraint firstAttribute="bottom" secondItem="v5e-2Y-mnu" secondAttribute="bottom" id="rc4-fq-qC0"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IPb-QE-Zfm">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IPb-QE-Zfm" misplaced="YES">
                                                 <rect key="frame" x="0.0" y="514" width="375" height="257"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LK2-7k-T47">

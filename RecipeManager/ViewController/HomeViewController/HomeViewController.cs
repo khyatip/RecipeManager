@@ -17,15 +17,18 @@ namespace RecipeManager
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-			UITapGestureRecognizer tapGesture = new UITapGestureRecognizer(HideKeyboard);
-			View.AddGestureRecognizer(tapGesture);
+			//UITapGestureRecognizer tapGesture = new UITapGestureRecognizer(HideKeyboard);
+			//View.AddGestureRecognizer(tapGesture);
+
 			AddRecipeButton.TouchUpInside += (sender, ea) =>
 			{
 				AddRecipeButtonSelected();
 			};
 			SearchBar.TextChanged += (sender, e) =>
 			{
+				
 				SearchBar.ShowsCancelButton = true;
+
 			};
 			SearchBar.SearchButtonClicked += (sender, e) =>
 			{
@@ -40,6 +43,12 @@ namespace RecipeManager
 				SearchBar.ResignFirstResponder();
 			};
 		}
+		//void HideKeyboard(UITapGestureRecognizer tap)
+		//{
+		//	SearchBar.Text = "";
+		//	SearchBar.ResignFirstResponder();
+
+		//}
 		public override void ViewWillAppear(bool animated)
 		{
 			base.ViewWillAppear(animated);
@@ -48,12 +57,6 @@ namespace RecipeManager
 			RecipeTableView.Source = new RecipeTableViewSource(recipeTableItems);
 			RecipeTableView.ReloadData();
 		}
-		void HideKeyboard(UITapGestureRecognizer tap)
-		{
-			SearchBar.Text = "";
-			SearchBar.ResignFirstResponder();
-		}
-
 		public override void ViewWillDisappear(bool animated)
 		{
 			base.ViewWillDisappear(animated);
