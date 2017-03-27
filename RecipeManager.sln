@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeManager", "RecipeManager\RecipeManager.csproj", "{686090D9-A241-48D4-A799-60E428E87FAE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeManagerUnitTests", "RecipeManagerUnitTests\RecipeManagerUnitTests.csproj", "{F57AA314-403C-40E7-B36E-7C590BB5748F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator
@@ -19,5 +21,13 @@ Global
 		{686090D9-A241-48D4-A799-60E428E87FAE}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 		{686090D9-A241-48D4-A799-60E428E87FAE}.Debug|iPhone.ActiveCfg = Debug|iPhone
 		{686090D9-A241-48D4-A799-60E428E87FAE}.Debug|iPhone.Build.0 = Debug|iPhone
+		{F57AA314-403C-40E7-B36E-7C590BB5748F}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{F57AA314-403C-40E7-B36E-7C590BB5748F}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{F57AA314-403C-40E7-B36E-7C590BB5748F}.Release|iPhone.ActiveCfg = Release|iPhone
+		{F57AA314-403C-40E7-B36E-7C590BB5748F}.Release|iPhone.Build.0 = Release|iPhone
+		{F57AA314-403C-40E7-B36E-7C590BB5748F}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{F57AA314-403C-40E7-B36E-7C590BB5748F}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{F57AA314-403C-40E7-B36E-7C590BB5748F}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{F57AA314-403C-40E7-B36E-7C590BB5748F}.Debug|iPhone.Build.0 = Debug|iPhone
 	EndGlobalSection
 EndGlobal

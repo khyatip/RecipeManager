@@ -17,8 +17,7 @@ namespace RecipeManager
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-			//UITapGestureRecognizer tapGesture = new UITapGestureRecognizer(HideKeyboard);
-			//View.AddGestureRecognizer(tapGesture);
+			//RecipeTableView.AutoresizingMask = UIViewAutoresizing.All;
 
 			AddRecipeButton.TouchUpInside += (sender, ea) =>
 			{
