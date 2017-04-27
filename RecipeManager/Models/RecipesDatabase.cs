@@ -96,6 +96,15 @@ namespace RecipeManager
 				return Table<Ingredient>().FirstOrDefault(x => x.Id == id);
 			}
 		}
+		public IEnumerable<Ingredient> GetWeeklyShoppingList()
+		{
+			lock (lockObject)
+			{
+				//return from i in Table<Recipe>() where i.CalorieCount == searchCalories select i).ToList()
+
+				return (from i in Table<Ingredient>() where i.RecipeId == 1 select i).ToList();
+			}
+		}
 		public int SaveIngredient(Ingredient ingredientItem)
 		{
 			lock (lockObject)

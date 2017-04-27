@@ -100,6 +100,7 @@
     <Reference Include="SQLite-net">
       <HintPath>..\packages\sqlite-net-pcl.1.3.1\lib\netstandard1.1\SQLite-net.dll</HintPath>
     </Reference>
+    <Reference Include="MonoTouch.Dialog-1" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
@@ -121,6 +122,8 @@
     <Folder Include="Models\" />
     <Folder Include="ViewController\HomeViewController\" />
     <Folder Include="ViewController\RecipeDetailsViewController\" />
+    <Folder Include="ViewController\CalendarViewControllers\" />
+    <Folder Include="ViewController\WeeklyShoppingListViewController\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\RecipeDetailsViewController.xib" />
@@ -150,6 +153,21 @@
     <Compile Include="Models\Step.cs" />
     <Compile Include="ViewController\RecipeDetailsViewController\StepsTableViewSource.cs" />
     <Compile Include="Models\RecipesDatabase.cs" />
+    <Compile Include="App.cs" />
+    <Compile Include="ViewController\CalendarViewControllers\MainCalendarViewController.cs" />
+    <Compile Include="ViewController\CalendarViewControllers\CalendarViewController.designer.cs">
+      <DependentUpon>MainCalendarViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewController\CalendarViewControllers\CalendarListViewController.cs" />
+    <Compile Include="ViewController\WeeklyShoppingListViewController\WeeklyShoppingListViewController.cs" />
+    <Compile Include="ViewController\WeeklyShoppingListViewController\WeeklyShoppingListViewController.designer.cs">
+      <DependentUpon>WeeklyShoppingListViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewController\CalendarViewControllers\RecipePickerViewController.cs" />
+    <Compile Include="ViewController\CalendarViewControllers\RecipePickerViewController.designer.cs">
+      <DependentUpon>RecipePickerViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewController\CalendarViewControllers\CreateEventEditViewDelegate.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

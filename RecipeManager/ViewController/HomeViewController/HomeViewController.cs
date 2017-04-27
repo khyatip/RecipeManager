@@ -9,6 +9,7 @@ namespace RecipeManager
 	public partial class HomeViewController : UIViewController
 	{
 		IEnumerable<Recipe> recipeTableItems;
+
 		protected HomeViewController(IntPtr handle) : base(handle)
 		{
 			// Note: this .ctor should not contain any initialization logic.
@@ -17,7 +18,8 @@ namespace RecipeManager
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-			//RecipeTableView.AutoresizingMask = UIViewAutoresizing.All;
+			//tableDelegate = new TableDelegate();
+			//table.Delegate = tableDelegate;
 
 			AddRecipeButton.TouchUpInside += (sender, ea) =>
 			{
@@ -41,6 +43,7 @@ namespace RecipeManager
 				SearchBar.ShowsCancelButton = false;
 				SearchBar.ResignFirstResponder();
 			};
+
 		}
 		//void HideKeyboard(UITapGestureRecognizer tap)
 		//{
@@ -53,7 +56,7 @@ namespace RecipeManager
 			base.ViewWillAppear(animated);
 			RecipeTableView.ContentInset = new UIEdgeInsets(-35, 0, 0, 0);
 			recipeTableItems = AppDelegate.RecipesDB.GetRecipesList();
-			RecipeTableView.Source = new RecipeTableViewSource(recipeTableItems);
+			RecipeTableView.Source = new RecipeTableViewSource(recipeTableItems,this);
 			RecipeTableView.ReloadData();
 		}
 		public override void ViewWillDisappear(bool animated)
@@ -64,14 +67,14 @@ namespace RecipeManager
 
 		public override void PrepareForSegue(UIStoryboardSegue segue, Foundation.NSObject sender)
 		{
-			var navctlr = segue.DestinationViewController as RecipeDetailsViewController;
-			if (navctlr != null)
-			{
-				var source = RecipeTableView.Source as RecipeTableViewSource;
-				var rowPath = RecipeTableView.IndexPathForSelectedRow;
-				var item = source.GetItem(rowPath.Row);
-				navctlr.SetRecipe(this, item);
-			}
+				var navctlr = segue.DestinationViewController as RecipeDetailsViewController;
+				if (navctlr != null)
+				{
+					var source = RecipeTableView.Source as RecipeTableViewSource;
+					var rowPath = RecipeTableView.IndexPathForSelectedRow;
+					var item = source.GetItem(rowPath.Row);
+					navctlr.SetRecipe(this, item);
+				}
 		}
 
 		public void AddRecipeButtonSelected()
@@ -79,6 +82,10 @@ namespace RecipeManager
 			var detail = Storyboard.InstantiateViewController("RecipeDetails") as RecipeDetailsViewController;
 			detail.Delegate = this;
 			NavigationController.PushViewController(detail, true);
+		}
+		partial void AddToScheduleButtonSelected(NSObject sender)
+		{
+			NavigationController.PushViewController(new MainCalendarViewController(), true);
 		}
 
 		public void SaveRecipe(Recipe recipe)
@@ -128,9 +135,15 @@ namespace RecipeManager
 			}
 
 			SearchBar.Text = "";
-			RecipeTableView.Source = new RecipeTableViewSource(recipeTableItems);
+			RecipeTableView.Source = new RecipeTableViewSource(recipeTableItems,this);
 			RecipeTableView.ReloadData();
 		}
 
+		partial void ShoppingListButtonSelected(NSObject sender)
+		{
+			var detail = Storyboard.InstantiateViewController("WeeklyShoppingList") as WeeklyShoppingListViewController;
+			detail.Delegate = this;
+			NavigationController.PushViewController(detail, true);
+		}
 	}
 }

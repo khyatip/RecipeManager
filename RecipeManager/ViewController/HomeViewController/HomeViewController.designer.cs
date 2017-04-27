@@ -16,6 +16,9 @@ namespace RecipeManager
 		UIKit.UIButton AddRecipeButton { get; set; }
 
 		[Outlet]
+		UIKit.UIButton AddToScheduleButton { get; set; }
+
+		[Outlet]
 		UIKit.UIButton CalorieCountFilterButton { get; set; }
 
 		[Outlet]
@@ -33,8 +36,14 @@ namespace RecipeManager
 		[Outlet]
 		UIKit.UISearchBar SearchTextField { get; set; }
 
+		[Outlet]
+		UIKit.UIButton ShoppingListButton { get; set; }
+
 		[Action ("AddRecipeButtonSelected:")]
 		partial void AddRecipeButtonSelected (Foundation.NSObject sender);
+
+		[Action ("AddToScheduleButtonSelected:")]
+		partial void AddToScheduleButtonSelected (Foundation.NSObject sender);
 
 		[Action ("CalorieCountFilterButtonSelected:")]
 		partial void CalorieCountFilterButtonSelected (Foundation.NSObject sender);
@@ -44,12 +53,23 @@ namespace RecipeManager
 
 		[Action ("RecipeTitleFilterButtonSelected:")]
 		partial void RecipeTitleFilterButtonSelected (Foundation.NSObject sender);
+
+		[Action ("ScheduleButtonSelected:")]
+		partial void ScheduleButtonSelected (Foundation.NSObject sender);
+
+		[Action ("ShoppingListButtonSelected:")]
+		partial void ShoppingListButtonSelected (Foundation.NSObject sender);
 		
 		void ReleaseDesignerOutlets ()
 		{
 			if (AddRecipeButton != null) {
 				AddRecipeButton.Dispose ();
 				AddRecipeButton = null;
+			}
+
+			if (AddToScheduleButton != null) {
+				AddToScheduleButton.Dispose ();
+				AddToScheduleButton = null;
 			}
 
 			if (CalorieCountFilterButton != null) {
@@ -72,14 +92,19 @@ namespace RecipeManager
 				RecipeTitleFilterButton = null;
 			}
 
+			if (SearchBar != null) {
+				SearchBar.Dispose ();
+				SearchBar = null;
+			}
+
 			if (SearchTextField != null) {
 				SearchTextField.Dispose ();
 				SearchTextField = null;
 			}
 
-			if (SearchBar != null) {
-				SearchBar.Dispose ();
-				SearchBar = null;
+			if (ShoppingListButton != null) {
+				ShoppingListButton.Dispose ();
+				ShoppingListButton = null;
 			}
 		}
 	}
