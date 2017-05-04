@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="NRT-S9-NN7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="NRT-S9-NN7">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -118,14 +118,14 @@
                         <color key="backgroundColor" red="0.7803921568627451" green="0.0" blue="0.22352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="7cI-Jk-1LJ" secondAttribute="trailing" id="0pa-5P-ACK"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="7cI-Jk-1LJ" secondAttribute="bottom" id="88m-wT-dSE"/>
                             <constraint firstItem="UEH-i2-V2z" firstAttribute="top" secondItem="kfh-15-EbK" secondAttribute="bottom" id="8jH-eo-C9p"/>
                             <constraint firstItem="7cI-Jk-1LJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="EMc-8q-qns"/>
-                            <constraint firstItem="kfh-15-EbK" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Kic-Bu-TJV"/>
                             <constraint firstAttribute="trailing" secondItem="kfh-15-EbK" secondAttribute="trailing" id="V5d-kK-E8J"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="7cI-Jk-1LJ" secondAttribute="bottom" id="W6w-hE-0Dy"/>
                             <constraint firstItem="kfh-15-EbK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="hmT-5G-voG"/>
                             <constraint firstItem="7cI-Jk-1LJ" firstAttribute="top" secondItem="UEH-i2-V2z" secondAttribute="bottom" id="iLL-El-pbR"/>
                             <constraint firstItem="UEH-i2-V2z" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="int-IY-rdl"/>
+                            <constraint firstItem="kfh-15-EbK" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="kll-Mg-PK5"/>
                             <constraint firstAttribute="trailing" secondItem="UEH-i2-V2z" secondAttribute="trailing" id="uWb-SW-vx5"/>
                         </constraints>
                     </view>
@@ -168,10 +168,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Shs-vI-4wb" firstAttribute="top" secondItem="QH0-nO-WLq" secondAttribute="bottom" id="84o-Cs-aUO"/>
+                            <constraint firstItem="Shs-vI-4wb" firstAttribute="top" secondItem="QH0-nO-WLq" secondAttribute="bottom" id="971-xd-ECL"/>
+                            <constraint firstItem="QH0-nO-WLq" firstAttribute="top" secondItem="7I7-KF-y1T" secondAttribute="bottom" id="Mxd-IL-UCz"/>
                             <constraint firstItem="QH0-nO-WLq" firstAttribute="leading" secondItem="GIB-YL-La6" secondAttribute="leading" id="cLc-2N-TJZ"/>
                             <constraint firstAttribute="trailing" secondItem="QH0-nO-WLq" secondAttribute="trailing" id="f3D-E8-hUm"/>
-                            <constraint firstItem="QH0-nO-WLq" firstAttribute="top" secondItem="7I7-KF-y1T" secondAttribute="bottom" id="t8z-It-Taq"/>
                         </constraints>
                     </view>
                     <connections>
@@ -391,11 +391,11 @@
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="pye-4X-Hvl" secondAttribute="trailing" id="88R-cj-dpA"/>
-                            <constraint firstItem="pye-4X-Hvl" firstAttribute="top" secondItem="6" secondAttribute="bottom" id="DuA-qq-w0D"/>
-                            <constraint firstItem="7" firstAttribute="top" secondItem="l2P-xb-Qak" secondAttribute="bottom" id="EZF-NV-RTx"/>
                             <constraint firstItem="l2P-xb-Qak" firstAttribute="leading" secondItem="10" secondAttribute="leading" id="HmL-3W-Lhu"/>
                             <constraint firstItem="pye-4X-Hvl" firstAttribute="leading" secondItem="10" secondAttribute="leading" id="JnF-6H-cWg"/>
+                            <constraint firstItem="7" firstAttribute="top" secondItem="l2P-xb-Qak" secondAttribute="bottom" id="V6L-Ls-7VV"/>
                             <constraint firstItem="l2P-xb-Qak" firstAttribute="top" secondItem="pye-4X-Hvl" secondAttribute="bottom" constant="5" id="Vo6-db-VMT"/>
+                            <constraint firstItem="pye-4X-Hvl" firstAttribute="top" secondItem="6" secondAttribute="bottom" id="pdE-XN-Fqz"/>
                             <constraint firstAttribute="trailing" secondItem="l2P-xb-Qak" secondAttribute="trailing" id="yph-U6-xuQ"/>
                         </constraints>
                     </view>

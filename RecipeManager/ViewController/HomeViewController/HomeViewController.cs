@@ -18,9 +18,6 @@ namespace RecipeManager
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-			//tableDelegate = new TableDelegate();
-			//table.Delegate = tableDelegate;
-
 			AddRecipeButton.TouchUpInside += (sender, ea) =>
 			{
 				AddRecipeButtonSelected();
@@ -56,7 +53,7 @@ namespace RecipeManager
 			base.ViewWillAppear(animated);
 			RecipeTableView.ContentInset = new UIEdgeInsets(-35, 0, 0, 0);
 			recipeTableItems = AppDelegate.RecipesDB.GetRecipesList();
-			RecipeTableView.Source = new RecipeTableViewSource(recipeTableItems,this);
+			//RecipeTableView.Source = new RecipeTableViewSource(recipeTableItems,this);
 			RecipeTableView.ReloadData();
 		}
 		public override void ViewWillDisappear(bool animated)
@@ -83,10 +80,10 @@ namespace RecipeManager
 			detail.Delegate = this;
 			NavigationController.PushViewController(detail, true);
 		}
-		partial void AddToScheduleButtonSelected(NSObject sender)
-		{
-			NavigationController.PushViewController(new MainCalendarViewController(), true);
-		}
+		//partial void AddToScheduleButtonSelected(NSObject sender)
+		//{
+		//	NavigationController.PushViewController(new MainCalendarViewController(), true);
+		//}
 
 		public void SaveRecipe(Recipe recipe)
 		{
@@ -135,7 +132,7 @@ namespace RecipeManager
 			}
 
 			SearchBar.Text = "";
-			RecipeTableView.Source = new RecipeTableViewSource(recipeTableItems,this);
+			//RecipeTableView.Source = new RecipeTableViewSource(recipeTableItems,this);
 			RecipeTableView.ReloadData();
 		}
 

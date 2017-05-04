@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeVC">
+            <connections>
+                <outlet property="AddRecipeButton" destination="Kg2-vr-Jzq" id="87A-pv-XMc"/>
+                <outlet property="CalorieCountFilterButton" destination="a6n-AK-CQC" id="tqk-QI-zJI"/>
+                <outlet property="CookTimeFilterButton" destination="2dY-Ny-ve2" id="A5S-a6-ZQy"/>
+                <outlet property="RecipeTableView" destination="JT2-ov-Iyd" id="Mda-IP-6d4"/>
+                <outlet property="RecipeTitleFilterButton" destination="0r8-Qs-pJb" id="MRa-6j-qbX"/>
+                <outlet property="SearchBar" destination="yCR-kw-fmB" id="mLw-Dn-gOn"/>
+                <outlet property="ShoppingListButton" destination="4jt-mJ-pwz" id="1sI-7c-z9s"/>
+                <outlet property="view" destination="zER-ok-58W" id="K2D-wO-E3g"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="zER-ok-58W">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Xq-Qx-Huo">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="74"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0r8-Qs-pJb">
+                            <rect key="frame" x="8" y="0.0" width="81" height="30"/>
+                            <state key="normal" title="Recipe Title"/>
+                            <connections>
+                                <action selector="RecipeTitleFilterButtonSelected:" destination="-1" eventType="touchUpInside" id="aeU-uL-K1U"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2dY-Ny-ve2">
+                            <rect key="frame" x="293" y="0.0" width="74" height="30"/>
+                            <state key="normal" title="Cook Time"/>
+                            <connections>
+                                <action selector="CookTimeFilterButtonSelected:" destination="-1" eventType="touchUpInside" id="las-AB-F15"/>
+                            </connections>
+                        </button>
+                        <searchBar contentMode="redraw" placeholder="Search by title, calories, or cook time" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yCR-kw-fmB">
+                            <rect key="frame" x="0.0" y="30" width="375" height="44"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <scopeButtonTitles>
+                                <string>Title</string>
+                                <string>Title</string>
+                            </scopeButtonTitles>
+                        </searchBar>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6n-AK-CQC">
+                            <rect key="frame" x="140.5" y="0.0" width="94" height="30"/>
+                            <state key="normal" title="Calorie Count"/>
+                            <connections>
+                                <action selector="CalorieCountFilterButtonSelected:" destination="-1" eventType="touchUpInside" id="wvi-H3-kKR"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="yCR-kw-fmB" secondAttribute="bottom" id="7QH-q4-DGc"/>
+                        <constraint firstItem="2dY-Ny-ve2" firstAttribute="top" secondItem="0r8-Qs-pJb" secondAttribute="top" id="99R-iT-tgq"/>
+                        <constraint firstItem="a6n-AK-CQC" firstAttribute="top" secondItem="0r8-Qs-pJb" secondAttribute="top" id="Jrr-40-82X"/>
+                        <constraint firstAttribute="trailing" secondItem="yCR-kw-fmB" secondAttribute="trailing" id="UDN-QB-eJa"/>
+                        <constraint firstItem="0r8-Qs-pJb" firstAttribute="leading" secondItem="0Xq-Qx-Huo" secondAttribute="leading" constant="8" id="lAB-Vk-XFO"/>
+                        <constraint firstItem="0r8-Qs-pJb" firstAttribute="top" secondItem="0Xq-Qx-Huo" secondAttribute="top" id="oLk-gD-uB8"/>
+                        <constraint firstItem="yCR-kw-fmB" firstAttribute="top" secondItem="2dY-Ny-ve2" secondAttribute="bottom" id="oaQ-qh-c8B"/>
+                        <constraint firstItem="yCR-kw-fmB" firstAttribute="leading" secondItem="0Xq-Qx-Huo" secondAttribute="leading" id="tLM-Yk-6FU"/>
+                        <constraint firstAttribute="trailing" secondItem="2dY-Ny-ve2" secondAttribute="trailing" constant="8" id="wAU-oj-G9s"/>
+                        <constraint firstItem="a6n-AK-CQC" firstAttribute="centerX" secondItem="0Xq-Qx-Huo" secondAttribute="centerX" id="zlF-d1-ddK"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="JT2-ov-Iyd">
+                    <rect key="frame" x="0.0" y="74" width="375" height="533"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <sections/>
+                </tableView>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Xfp-ZR-AX3">
+                    <rect key="frame" x="0.0" y="607" width="375" height="60"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4jt-mJ-pwz">
+                            <rect key="frame" x="0.0" y="9.5" width="125" height="41"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                            <state key="normal" title="📝">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="ShoppingListButtonSelected:" destination="-1" eventType="touchUpInside" id="qWt-PR-U4G"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bvu-Mj-KY2">
+                            <rect key="frame" x="125" y="9.5" width="125" height="41"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                            <state key="normal" title="📈"/>
+                            <connections>
+                                <action selector="CalorieTrackerButtonSelected:" destination="-1" eventType="touchUpInside" id="Dh2-wK-cRk"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kg2-vr-Jzq">
+                            <rect key="frame" x="250" y="0.0" width="125" height="60"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                            <state key="normal" title="+"/>
+                            <connections>
+                                <action selector="AddRecipeButtonSelected:" destination="-1" eventType="touchUpInside" id="jSO-sf-2y0"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="0.78039215689999997" green="0.0" blue="0.22352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="JT2-ov-Iyd" secondAttribute="trailing" id="ArW-KC-m4e"/>
+                <constraint firstItem="Xfp-ZR-AX3" firstAttribute="leading" secondItem="zER-ok-58W" secondAttribute="leading" id="DZ8-Tv-pg1"/>
+                <constraint firstItem="JT2-ov-Iyd" firstAttribute="top" secondItem="0Xq-Qx-Huo" secondAttribute="bottom" id="Kcy-uG-Xx1"/>
+                <constraint firstAttribute="bottom" secondItem="Xfp-ZR-AX3" secondAttribute="bottom" id="Nsj-T8-sBA"/>
+                <constraint firstItem="Xfp-ZR-AX3" firstAttribute="top" secondItem="JT2-ov-Iyd" secondAttribute="bottom" id="XAX-8R-L1d"/>
+                <constraint firstItem="0Xq-Qx-Huo" firstAttribute="top" secondItem="zER-ok-58W" secondAttribute="top" id="dPw-pC-lIt"/>
+                <constraint firstItem="0Xq-Qx-Huo" firstAttribute="leading" secondItem="zER-ok-58W" secondAttribute="leading" id="fGy-eC-evv"/>
+                <constraint firstAttribute="trailing" secondItem="0Xq-Qx-Huo" secondAttribute="trailing" id="kPr-8v-8oS"/>
+                <constraint firstAttribute="trailing" secondItem="Xfp-ZR-AX3" secondAttribute="trailing" id="o9G-kj-QBX"/>
+                <constraint firstItem="JT2-ov-Iyd" firstAttribute="leading" secondItem="zER-ok-58W" secondAttribute="leading" id="thF-sZ-soA"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

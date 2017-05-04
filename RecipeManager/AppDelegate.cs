@@ -9,16 +9,27 @@ namespace RecipeManager
 	public class AppDelegate : UIApplicationDelegate
 	{
 		// class-level declarations
-		public static RecipesDatabase RecipesDB;
-		public override UIWindow Window
-		{
-			get;
-			set;
-		}
+		public static RecipesObjectMapper RecipesDB;
+
+		public override UIWindow Window { get; set; }
 
 		public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
 		{
-			RecipesDB = new RecipesDatabase(RecipesDatabase.DatabaseFilePath);
+			RecipesDB = new RecipesObjectMapper(RecipesObjectMapper.DatabaseFilePath);
+
+			Window = new UIWindow(UIScreen.MainScreen.Bounds);
+
+			var recipeListModel = new RecipesViewModel(/*RecipesDB.GetRecipesList()*/);
+			//var recipeDetailsViewSource = new RecipeTableViewSource();
+			var homeVC = new HomeVC(RecipesDB.GetRecipesList(), recipeListModel);
+
+			homeVC.EdgesForExtendedLayout = UIRectEdge.None;
+
+			var navVC = new UINavigationController(homeVC);
+
+			Window.RootViewController = navVC;
+			Window.MakeKeyAndVisible();
+
 			return true;
 		}
 

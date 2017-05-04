@@ -124,11 +124,17 @@
     <Folder Include="ViewController\RecipeDetailsViewController\" />
     <Folder Include="ViewController\CalendarViewControllers\" />
     <Folder Include="ViewController\WeeklyShoppingListViewController\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="ViewController\CalorieTracker\" />
   </ItemGroup>
   <ItemGroup>
-    <InterfaceDefinition Include="Resources\RecipeDetailsViewController.xib" />
     <InterfaceDefinition Include="Storyboards\LaunchScreen.storyboard" />
     <InterfaceDefinition Include="Storyboards\Main.storyboard" />
+    <InterfaceDefinition Include="ViewController\HomeViewController\HomeVC.xib" />
+    <InterfaceDefinition Include="Resources\RecipeDetailsViewController.xib" />
+    <InterfaceDefinition Include="ViewController\RecipeDetailsViewController\RecipeDetailsVC.xib" />
+    <InterfaceDefinition Include="ViewController\WeeklyShoppingListViewController\WeeklyShoppingListVC.xib" />
+    <InterfaceDefinition Include="ViewController\CalorieTracker\CalorieTrackerVC.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -152,22 +158,36 @@
     <Compile Include="Models\Ingredient.cs" />
     <Compile Include="Models\Step.cs" />
     <Compile Include="ViewController\RecipeDetailsViewController\StepsTableViewSource.cs" />
-    <Compile Include="Models\RecipesDatabase.cs" />
+    <Compile Include="Models\RecipeObjectMapper.cs" />
     <Compile Include="App.cs" />
     <Compile Include="ViewController\CalendarViewControllers\MainCalendarViewController.cs" />
     <Compile Include="ViewController\CalendarViewControllers\CalendarViewController.designer.cs">
       <DependentUpon>MainCalendarViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewController\CalendarViewControllers\CalendarListViewController.cs" />
     <Compile Include="ViewController\WeeklyShoppingListViewController\WeeklyShoppingListViewController.cs" />
     <Compile Include="ViewController\WeeklyShoppingListViewController\WeeklyShoppingListViewController.designer.cs">
       <DependentUpon>WeeklyShoppingListViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewController\CalendarViewControllers\RecipePickerViewController.cs" />
-    <Compile Include="ViewController\CalendarViewControllers\RecipePickerViewController.designer.cs">
-      <DependentUpon>RecipePickerViewController.cs</DependentUpon>
-    </Compile>
     <Compile Include="ViewController\CalendarViewControllers\CreateEventEditViewDelegate.cs" />
+    <Compile Include="ViewController\HomeViewController\HomeVC.cs" />
+    <Compile Include="ViewController\HomeViewController\HomeVC.designer.cs">
+      <DependentUpon>HomeVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewController\RecipeDetailsViewController\RecipeDetailsVC.cs" />
+    <Compile Include="ViewController\RecipeDetailsViewController\RecipeDetailsVC.designer.cs">
+      <DependentUpon>RecipeDetailsVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewController\WeeklyShoppingListViewController\WeeklyShoppingListVC.cs" />
+    <Compile Include="ViewController\WeeklyShoppingListViewController\WeeklyShoppingListVC.designer.cs">
+      <DependentUpon>WeeklyShoppingListVC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\IngredientsViewModel.cs" />
+    <Compile Include="ViewModels\RecipesViewModel.cs" />
+    <Compile Include="ViewModels\StepsViewModel.cs" />
+    <Compile Include="ViewController\CalorieTracker\CalorieTrackerVC.cs" />
+    <Compile Include="ViewController\CalorieTracker\CalorieTrackerVC.designer.cs">
+      <DependentUpon>CalorieTrackerVC.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

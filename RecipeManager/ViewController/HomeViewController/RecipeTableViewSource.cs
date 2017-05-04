@@ -10,11 +10,10 @@ namespace RecipeManager
 	public class RecipeTableViewSource : UITableViewSource
 	{
 		IList<Recipe> recipeTableItems;
-		protected string cellIdentifier = "RecipeCell";
-		protected CreateEventEditViewDelegate eventControllerDelegate;
-		protected HomeViewController owner;
+		string cellIdentifier = "RecipeCell";
+		HomeVC owner;
 
-		public RecipeTableViewSource(IEnumerable<Recipe> recipeItems, HomeViewController HomeVC)
+		public RecipeTableViewSource(IEnumerable<Recipe> recipeItems, HomeVC HomeVC)
 		{
 			recipeTableItems = recipeItems.ToList();
 			this.owner = HomeVC;
@@ -35,7 +34,10 @@ namespace RecipeManager
 
 			return cell;
 		}
-
+		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
+		{
+			owner.ViewRecipe(recipeTableItems[indexPath.Row]);
+		}
 		public Recipe GetItem(int id)
 		{
 			return recipeTableItems[id];
@@ -63,7 +65,7 @@ namespace RecipeManager
 				"Schedule",
 				delegate
 				{
-					RequestAccess(EKEntityType.Event, () => { LaunchCreateNewEvent(indexPath); });
+					RequestAccess(EKEntityType.Event, () => { owner.LaunchCreateNewEvent(indexPath); });
 				});
 
 			return new UITableViewRowAction[] { DeleteRecipeOption, ScheduleRecipeButton };
@@ -87,20 +89,15 @@ namespace RecipeManager
 						if (granted)
 							completion.Invoke();
 						else
-							new UIAlertView("Access Denied", "User Denied Access to Calendars/Reminders", null, "ok", null).Show();
+							PresentError();
 					});
 				});
 		}
-
-		protected void LaunchCreateNewEvent(Foundation.NSIndexPath indexPath)
+		public void PresentError()
 		{
-			EventKitUI.EKEventEditViewController eventController =new EventKitUI.EKEventEditViewController();
-			eventController.EventStore = App.Current.EventStore;
-			eventControllerDelegate = new CreateEventEditViewDelegate(eventController, recipeTableItems[indexPath.Row]);
-			eventController.EditViewDelegate = eventControllerDelegate;
-			eventController.Title = recipeTableItems[indexPath.Row].RecipeTitle;
-			owner.PresentViewController(eventController, true, null);
-
+			var okAlertController = UIAlertController.Create("Access Denied", "User denied access to Calenders", UIAlertControllerStyle.Alert);
+			okAlertController.AddAction(UIAlertAction.Create("Ok", UIAlertActionStyle.Default, null));
+			owner.PresentViewController(okAlertController, true, null);
 		}
 	}
 }
