@@ -19,7 +19,7 @@ namespace RecipeManager
 
 		public void SetEventValues(Recipe recipe)
 		{
-			eventController.Event.Title = "REM - " + recipe.RecipeTitle;
+			eventController.Event.Title = recipe.RecipeTitle;
 			eventController.Event.Notes = "Calorie Count: " + recipe.CalorieCount + "\n" +
 										 "Cook Time In Minutes: " + recipe.CookTimeInMinutes + "\n";
 			eventController.Event.Notes = eventController.Event.Notes + GetIngredients(recipe);

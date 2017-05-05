@@ -122,7 +122,7 @@
     <Folder Include="Models\" />
     <Folder Include="ViewController\HomeViewController\" />
     <Folder Include="ViewController\RecipeDetailsViewController\" />
-    <Folder Include="ViewController\CalendarViewControllers\" />
+    <Folder Include="ViewController\CalendarEvent\" />
     <Folder Include="ViewController\WeeklyShoppingListViewController\" />
     <Folder Include="ViewModels\" />
     <Folder Include="ViewController\CalorieTracker\" />
@@ -160,15 +160,11 @@
     <Compile Include="ViewController\RecipeDetailsViewController\StepsTableViewSource.cs" />
     <Compile Include="Models\RecipeObjectMapper.cs" />
     <Compile Include="App.cs" />
-    <Compile Include="ViewController\CalendarViewControllers\MainCalendarViewController.cs" />
-    <Compile Include="ViewController\CalendarViewControllers\CalendarViewController.designer.cs">
-      <DependentUpon>MainCalendarViewController.cs</DependentUpon>
-    </Compile>
     <Compile Include="ViewController\WeeklyShoppingListViewController\WeeklyShoppingListViewController.cs" />
     <Compile Include="ViewController\WeeklyShoppingListViewController\WeeklyShoppingListViewController.designer.cs">
       <DependentUpon>WeeklyShoppingListViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewController\CalendarViewControllers\CreateEventEditViewDelegate.cs" />
+    <Compile Include="ViewController\CalendarEvent\CreateEventEditViewDelegate.cs" />
     <Compile Include="ViewController\HomeViewController\HomeVC.cs" />
     <Compile Include="ViewController\HomeViewController\HomeVC.designer.cs">
       <DependentUpon>HomeVC.cs</DependentUpon>
@@ -188,6 +184,7 @@
     <Compile Include="ViewController\CalorieTracker\CalorieTrackerVC.designer.cs">
       <DependentUpon>CalorieTrackerVC.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewController\CalorieTracker\CalorieTrackerTableViewSource.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

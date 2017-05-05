@@ -82,7 +82,7 @@ namespace RecipeManager
 
 		partial void CalorieTrackerButtonSelected(NSObject sender)
 		{
-			var calorieTrackerVC = new CalorieTrackerVC();
+			var calorieTrackerVC = new CalorieTrackerVC(recipesVM);
 			calorieTrackerVC.EdgesForExtendedLayout = UIRectEdge.None;
 			NavigationController.PushViewController(calorieTrackerVC, true);
 		}

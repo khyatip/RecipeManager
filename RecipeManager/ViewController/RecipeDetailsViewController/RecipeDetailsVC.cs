@@ -7,7 +7,6 @@ namespace RecipeManager
 {
 	public partial class RecipeDetailsVC : UIViewController
 	{
-		//DataViewModel dataModel;
 		public Recipe currentRecipe { get; set;}
 		IEnumerable<Ingredient> ingredientsTableItems;
 		IEnumerable<Step> stepsTableItems;
@@ -118,7 +117,6 @@ namespace RecipeManager
 			Delegate.SaveRecipe(currentRecipe);
 			ingredientsVM.SaveIngredentsList(currentRecipe.Id, newIngredientsList);
 			stepsVM.SaveStepsList(currentRecipe.Id, newStepsList);
-			Console.WriteLine("RECIPE SAVED");
 			NavigationController.PopViewController(true);
 		}
 		public void AssignRecipeValues()
